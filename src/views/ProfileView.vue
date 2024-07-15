@@ -17,11 +17,11 @@
                   <input class="info-field" type="text" id="user-lastname" :value="user.user_lastname" :disabled="fieldActive">
                 </div>
                 <div class="form-field profile-number">
-                  <label for="user-number">Teléfono</label>
+                  <label for="user-number">Teléfono:</label>
                   <input class="info-field" type="number" id="user-number" :value="user.user_number" :disabled="fieldActive">
                 </div>
                 <div class="form-field profile-gender">
-                  <label for="user-gender">Género</label>
+                  <label for="user-gender">Género:</label>
                   <select class="info-field" name="user-gender" id="user-gender" :disabled="fieldActive">
                     <option value="male">Masculino</option>
                     <option value="female">Femenino</option>
