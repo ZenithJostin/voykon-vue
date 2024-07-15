@@ -3,6 +3,7 @@ import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
 import DeliveryView from '../views/DeliveryView.vue'
 import OrdersLayout from '../layouts/OrdersLayout.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
           path: "",
           name: "FirstView",
           redirect: "/repartidor/pedidos",
+        }, 
+        {
+          path: "perfil",
+          name: "ProfileView",
+          component: ProfileView,
         },
       ],
     },
@@ -35,8 +41,7 @@ const router = createRouter({
       component: OrdersLayout,
         },
       ],
-    },
-    
+    }
   ]
 })
 
