@@ -1,43 +1,40 @@
 <template>
-    <div class="tags-main">
-        <div class="tag">
-            Esto es contenido para probar
+   <div class="orders-container">
+    <template v-for="order in orders" :key="order.order_id">
+        <div class="order-card">
+            <div class="order-card-top">
+                <div class="order-restaurant-name">
+                    <p>{{ order.order_restaurant_name }}</p>
+                </div>
+                <div class="order-address">
+                    <p>{{order.order_address}}</p>
+                </div>
+                <div class="order-restaurant-image">
+                    <div class="restaurant-order-image-container">
+                        <img :src="order.restaurant_image" alt="Imagen de marca">
+                    </div>
+                </div>
+            </div>
+            <div class="order-card-bottom">
+                <div class="order-timer">
+                    <p>Hora: 20:00</p>
+                </div>
+                <div class="order-details">
+                    <button type="button" class="order-details-btn">Ver detalles</button>
+                </div>
+            </div>
         </div>
-        <div class="tag">
-            Esto es contenido para probar
-        </div><div class="tag">
-            Esto es contenido para probar
-        </div>
-        <div class="tag">
-            Esto es contenido para probar
-        </div>
-        <div class="tag">
-            Esto es contenido para probar
-        </div>
-        <div class="tag">
-            Esto es contenido para probar
-        </div>
-        <div class="tag">
-            Esto es contenido para probar
-        </div>
-    </div>
+    </template>
+   </div>
 </template>
 
 
-<style lang="sass" scoped>
-@import "../css/variables.sass"
-
-.tags-main
-    display: flex
-    width: 100%
-    padding: 2rem
-    flex-direction: row
-    flex-wrap: wrap
-    .tag
-        width: 100%
-        margin-bottom: 2rem
-        background: $white
-        box-shadow: 0 0 10px #0000002c
-        padding: 2rem
-        text-align: center
+<style>
+@import url(../css/orders.sass);
 </style>
+
+<script setup>
+    import * as testorders from "/src/composables/testOrders.js"
+
+    const orders = testorders.orders;
+</script>

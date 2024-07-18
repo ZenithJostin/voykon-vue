@@ -18,13 +18,13 @@ export const orders = ref([
         order_id:1,
         restaurant_image:"/src/assets/images/image-profile-user.jpg",
         order_address:"Algarra",
-        order_restaurant_name:"KFC",
+        order_restaurant_name:"Donde Amparito",
     },
     {
         order_id:1,
         restaurant_image:"/src/assets/images/image-profile-user.jpg",
         order_address:"Algarra",
-        order_restaurant_name:"KFC",
+        order_restaurant_name:"Burger King",
     },
     {
         order_id:1,
