@@ -9,7 +9,7 @@
         </div>
         <div class="nav-header">
             <template v-for="user in users" :key="user.user_id">
-                <div class="info-user">
+                <div v-if="user.user_logged === true" class="info-user">
                     <div class="name-user">
                         <h2>{{ user.user_name }}</h2>
                         <div class="status-user" @click="changeStatus(user)">

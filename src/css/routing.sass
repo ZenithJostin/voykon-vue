@@ -1,0 +1,198 @@
+@import ../css/variables.sass
+
+.main-content
+    height: 100%
+    width: 100%
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    flex-wrap: wrap
+    gap: 2rem
+    padding: 2rem 2.5rem
+    .order-card-admin
+        height: 250px
+        width: 400px
+        min-height: 200px
+        min-width: 250px
+        background-color: $white
+        border-radius: 10px
+        box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
+        display: flex
+        flex-direction: column
+        .order-card-top
+            height: 20%
+            width: 100%
+            padding: 0 1em
+            display: flex
+            justify-content: flex-end
+            align-items: center
+            position: relative
+            .user-assignment-container
+                height: 0px
+                width: 300px
+                background-color: $white
+                position: absolute
+                top: 85%
+                border-radius: 10px 0 10px 10px
+                overflow: hidden
+                padding: 0.5em 1em
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: space-evenly
+                z-index: 2
+                transition: all 0.6s ease-in
+                .users-list::-webkit-scrollbar
+                    display: none
+                .users-list
+                    height: 85%
+                    width: 100%
+                    overflow: auto
+                    padding: 0 5px
+                    .user-tag
+                        height: 70px
+                        width: 100%
+                        background-color: #ffffff
+                        border-radius: 10px
+                        border-left: 3px solid $primary
+                        box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.61)
+                        margin: 10px 0
+                        padding: 0 10px
+                        display: flex
+                        align-items: center
+                        justify-content: flex-start
+                        gap: 7px
+                        cursor: pointer
+                        .user-tag-picture
+                            max-height: 55px
+                            max-width: 55px
+                            border-radius: 50%
+                            overflow: hidden
+                            border: 1px solid #000
+                            img
+                                height: 100%
+                                width: 100%
+                        .user-tag-name
+                            font-family: $font01
+                            font-size: 1rem
+                            font-weight: 600
+                            color: $dark
+                            text-align: left
+                .assign-user-btn
+                    padding: 0.3rem 0.7rem
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 500
+                    border: none
+                    border-radius: 50px
+                    background-color: $primary
+                    color: $white
+                    cursor: pointer
+                    display: none
+            .user-assignment-container.active
+                height: 400px
+                box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.61)
+                border-top: 4px solid $primary
+                .assign-user-btn
+                    display: block
+            .order-card-menu
+                height: 40px
+                width: 35px
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: space-evenly
+                cursor: pointer
+                .menu-line
+                    height: 6px
+                    width: 100%
+                    background-color: $dark
+                    border-radius: 3px
+                    transition: transform 0.7s
+            .order-card-menu.active-menu
+                .line-top
+                    transform: rotate(45deg) translate(6px, 6px)
+                    background-color: $primary 
+                .line-mid
+                    display: none
+                .line-bottom
+                    transform: rotate(-45deg) translate(5px, -5px)
+                    background-color: $primary 
+        .order-card-mid
+            height: 50%
+            width: 100%
+            padding: 0.5em 1em
+            display: flex
+            .top-section-left
+                flex: 2
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                text-align: center
+                gap: 10px
+                .order-restaurant-name
+                    font-family: $font01
+                    font-size: 1.5rem
+                    font-weight: 700
+                    color: $primary
+                    text-align: center
+                .order-address
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 500
+                    color: $dark
+            .top-section-right
+                flex: 1
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: 10px
+                .order-restaurant-image
+                    height: 100px
+                    width: 100px
+                    border-radius: 5px
+                    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.29)
+                    overflow: hidden
+                    img
+                        height: 100%
+                        width: 100%
+        .order-card-bottom
+            height: 30%
+            width: 100%
+            padding: 0.5em 1em
+            display: flex
+            .order-time
+                flex: 1
+                display: flex
+                justify-content: center
+                align-items: center
+                p
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 600
+                    color: $dark
+            .order-details
+                flex: 1
+                display: flex
+                justify-content: center
+                align-items: center
+                .order-details-btn
+                    padding: 0.7rem 1.5rem
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 600
+                    border: none
+                    border-radius: 50px
+                    background-color: $primary
+                    color: $white
+                    cursor: pointer
+@media screen and (max-width:1197px)
+    .main-content
+        justify-content: center
+@media screen and (max-width:380px)
+    .order-details-btn
+        padding: 0.5rem 0.8rem !important
+        font-size: 0.9rem !important
+    .user-assignment-container
+        width: 250px !important
