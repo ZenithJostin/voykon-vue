@@ -4,6 +4,8 @@ import HomeView from '../views/HomeView.vue'
 import DeliveryView from '../views/DeliveryView.vue'
 import OrdersLayout from '../layouts/OrdersLayout.vue'
 import ProfileView from '../views/ProfileView.vue'
+import AdminView from '../views/AdminView.vue'
+import RoutingLayout from '../layouts/RoutingLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +43,18 @@ const router = createRouter({
       component: OrdersLayout,
         },
       ],
+    },
+    {
+      path: "/administrador",
+      name: "administrador",
+      component: AdminView,
+      children:[
+        {
+          path: "/enrutamiento",
+          name: "RoutingLayout",
+          component: RoutingLayout,
+        }
+      ]
     }
   ]
 })
