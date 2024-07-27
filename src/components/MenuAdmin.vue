@@ -3,7 +3,6 @@
   <div :class="['menu', { visible: isVisible }]">
     <nav>
       <div class="menu-items">
-        <!-- Cambiar la ruta para que se active el boton, la comparacion se hace con el path definido en el index.js el router -->
         <router-link class="link-icon" to="enrutamiento">
           <div class="menu-item" :class="{ active: isActiveIcon('enrutamiento') }"> 
             <div class="menu-item-nav">
@@ -13,8 +12,8 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="perfil">
-          <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
+        <router-link class="link-icon" to="domicilios">
+          <div class="menu-item">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> shopping_bag </span>
               <p>Domicilios</p>
@@ -22,8 +21,8 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="/">
-          <div class="menu-item">
+        <router-link class="link-icon" to="ver-perfil">
+          <div class="menu-item" :class="{ active: isActiveIcon('ver-perfil') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">person</span>
               <p>Ver perfil</p>
