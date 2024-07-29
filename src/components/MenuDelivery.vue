@@ -1,4 +1,3 @@
-<!-- MenuDelivery.vue -->
 <template>
 	<div :class="['menu', { visible: isVisible }]">
 		<nav>

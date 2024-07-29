@@ -3,7 +3,7 @@
 import { ref } from 'vue';
 import HeaderApp from '../components/HeaderApp.vue';
 import MenuDelivery from '../components/MenuDelivery.vue';
-import OrdersLayout from '../layouts/OrdersLayout.vue';
+
 
 // Crear un estado de visibilidad para el menú
 const isMenuVisible = ref(false);

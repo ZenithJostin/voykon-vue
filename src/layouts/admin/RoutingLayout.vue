@@ -51,7 +51,7 @@
 </template>
 
 <style>
-@import url(../css/routing.sass);
+@import url(/src/css/routing.sass);
 </style>
 
 <script setup>

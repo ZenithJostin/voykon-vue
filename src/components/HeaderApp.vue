@@ -1,4 +1,3 @@
-<!-- HeaderApp.vue -->
 <template>
     <div class="header">
         <div class="logo-header">
@@ -17,7 +16,7 @@
                             <div :class="checkStatus(user.user_status)"></div>
                         </div>
                     </div>
-                    <RouterLink to="/repartidor/perfil">
+                    <RouterLink to="perfil">
                         <div class="image-user">
                             <img :src="user.user_image" alt="user-profile">
                         </div>
