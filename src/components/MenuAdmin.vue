@@ -1,4 +1,3 @@
-<!-- MenuDelivery.vue -->
 <template>
   <div :class="['menu', { visible: isVisible }]">
     <nav>
@@ -21,8 +20,8 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="ver-perfil">
-          <div class="menu-item" :class="{ active: isActiveIcon('ver-perfil') }">
+        <router-link class="link-icon" to="perfil">
+          <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">person</span>
               <p>Ver perfil</p>

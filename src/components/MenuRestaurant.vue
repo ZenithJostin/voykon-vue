@@ -11,6 +11,15 @@
 						<span class="material-symbols-outlined">chevron_right</span>
 					</div>
 				</router-link>
+				<router-link class="link-icon" to="menu">
+					<div class="menu-item" :class="{ 'active': isActiveIcon('menu') }">
+						<div class="menu-item-nav">
+							<span class="material-symbols-outlined">restaurant_menu</span>
+							<p>Menú</p>
+						</div>
+						<span class="material-symbols-outlined">chevron_right</span>
+					</div>
+				</router-link>
 				<router-link class="link-icon" to="perfil">
 					<div class="menu-item" :class="{ 'active': isActiveIcon('perfil') }">
 						<div class="menu-item-nav">

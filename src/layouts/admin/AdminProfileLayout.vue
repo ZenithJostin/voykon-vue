@@ -2,7 +2,8 @@
     <section class="profile-section">
       <div class="profile-information-container">
         <template v-for="user in users" :key="user.user_id">
-          <form  v-if="user.user_logged === true" action="#">
+          <template v-if="user.user_logged === true">
+          <form action="#">
             <div class="form-top-container">
               <div class="image-container info-field" disabled>
                 <img :src="user.user_image" alt="Imagen de perfil" />
@@ -89,12 +90,13 @@
             </div>
           </form>
         </template>
+      </template>
       </div>
     </section>
   </template>
   
   <style>
-  @import url(../css/profile.sass);
+  @import url(/src/css/profile.sass);
   </style>
   
   <script setup>

@@ -28,7 +28,7 @@
 
 
 <style>
-@import url(../css/orders.sass);
+@import url(/src/css/orders.sass);
 </style>
 
 <script setup>
