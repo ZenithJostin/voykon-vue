@@ -17,7 +17,7 @@
                   id="user-name"
                   :value="user.user_name"
                   :disabled="fieldActive"
-                />
+                >
               </div>
               <div class="form-field profile-lastname">
                 <label for="user-lastname">Apellidos:</label>
@@ -27,7 +27,7 @@
                   id="user-lastname"
                   :value="user.user_lastname"
                   :disabled="fieldActive"
-                />
+                >
               </div>
               <div class="form-field profile-number">
                 <label for="user-number">Teléfono:</label>
@@ -37,7 +37,7 @@
                   id="user-number"
                   :value="user.user_number"
                   :disabled="fieldActive"
-                />
+                >
               </div>
               <div class="form-field profile-gender">
                 <label for="user-gender">Género:</label>
@@ -55,7 +55,7 @@
                   id="user-email"
                   :value="user.user_email"
                   :disabled="fieldActive"
-                />
+                >
               </div>
               <div class="form-field profile-age">
                 <label for="user-age">Edad:</label>
@@ -65,7 +65,7 @@
                   id="user-age"
                   :value="user.user_age"
                   :disabled="fieldActive"
-                />
+                >
               </div>
               <div class="form-field profile-description">
                 <label for="user-description">Descripción:</label>

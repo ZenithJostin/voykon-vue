@@ -6,7 +6,8 @@ import OrdersLayout from '../layouts/OrdersLayout.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AdminView from '../views/AdminView.vue'
 import RoutingLayout from '../layouts/RoutingLayout.vue'
-import AdminProfileView from '../views/AdminProfileView.vue'
+import AdminProfileView from '../layouts/AdminProfileLayout.vue'
+import AdminDeliveriesLayout from '../layouts/DeliveriesLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,15 +52,25 @@ const router = createRouter({
       component: AdminView,
       children:[
         {
-          path: "/enrutamiento",
+          path: "",
+          name: "FirstViewAdmin",
+          redirect: "/administrador/enrutamiento",
+        },
+        {
+          path: "enrutamiento",
           name: "RoutingLayout",
           component: RoutingLayout,
         },
         {
-          path: "/ver-perfil",
+          path: "perfil",
           name: "ProfileViewAdmin",
           component: AdminProfileView,
-        }
+        },
+        {
+          path: "domicilios",
+          name: "AdminDeliveriesLayout",
+          component: AdminDeliveriesLayout,
+        },
       ]
     }
   ]
