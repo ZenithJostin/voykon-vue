@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
+
 // Delivery
 import DeliveryView from '../views/DeliveryView.vue'
 import OrdersDelivery from '../layouts/delivery/OrdersDeliveryLayout.vue'
@@ -14,6 +16,7 @@ import AdminProfileLayout from '../layouts/admin/AdminProfileLayout.vue'
 import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
+import MenuRestaurant from '../layouts/restaurant/MenuRestaurantLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +25,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/ingreso',
+      name: 'Login',
+      component: LoginView
     },
     {
       path: '/repartidor',
@@ -90,6 +98,11 @@ const router = createRouter({
           path: "perfil",
           name: "ProfileRestaurant",
           component: RestaurantProfile,
+        },
+        {
+          path: "menu",
+          name: "MenuRestaurant",
+          component: MenuRestaurant,
         }
       ]
     }
