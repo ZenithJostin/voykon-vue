@@ -3,14 +3,17 @@ import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 
+
 // Delivery
 import DeliveryView from '../views/DeliveryView.vue'
 import OrdersDelivery from '../layouts/delivery/OrdersDeliveryLayout.vue'
 import ProfileView from '../layouts/delivery/ProfileDeliveryLayout.vue'
+
 // Admin
 import AdminView from '../views/AdminView.vue'
 import RoutingLayout from '../layouts/admin/RoutingLayout.vue'
 import AdminProfileLayout from '../layouts/admin/AdminProfileLayout.vue'
+import AdminDeliveriesLayout from '../layouts/DeliveriesLayout.vue'
 
 // Restaurant
 import RestaurantView from '../views/RestaurantView.vue'
@@ -77,7 +80,12 @@ const router = createRouter({
           path: "perfil",
           name: "ProfileViewAdmin",
           component: AdminProfileLayout,
-        }
+        },
+        {
+          path: "domicilios",
+          name: "AdminDeliveriesLayout",
+          component: AdminDeliveriesLayout,
+        },
       ]
     },
     {
