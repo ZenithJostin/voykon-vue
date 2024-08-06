@@ -3,7 +3,7 @@
     <nav>
       <div class="menu-items">
         <router-link class="link-icon" to="enrutamiento">
-          <div class="menu-item" :class="{ active: isActiveIcon('enrutamiento') }"> 
+          <div class="menu-item" :class="{ active: isActiveIcon('enrutamiento') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> signpost </span>
               <p>Enrutamiento</p>
@@ -12,7 +12,7 @@
           </div>
         </router-link>
         <router-link class="link-icon" to="domicilios">
-          <div class="menu-item">
+          <div class="menu-item" :class="{ active: isActiveIcon('domicilios') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> shopping_bag </span>
               <p>Domicilios</p>
@@ -64,7 +64,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { defineProps } from 'vue'
-
 
 const props = defineProps({
   isVisible: {
