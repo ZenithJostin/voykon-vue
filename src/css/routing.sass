@@ -9,6 +9,11 @@
     flex-wrap: wrap
     gap: 2rem
     padding: 2rem 2.5rem
+<<<<<<< Updated upstream
+=======
+    .order-card-admin.extended-details
+        height: auto
+>>>>>>> Stashed changes
     .order-card-admin
         height: 250px
         width: 400px
@@ -19,8 +24,14 @@
         box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
         display: flex
         flex-direction: column
+<<<<<<< Updated upstream
         .order-card-top
             height: 20%
+=======
+        overflow: hidden
+        .order-card-top
+            min-height: 50px
+>>>>>>> Stashed changes
             width: 100%
             padding: 0 1em
             display: flex
@@ -41,7 +52,11 @@
                 align-items: center
                 justify-content: space-evenly
                 z-index: 2
+<<<<<<< Updated upstream
                 transition: all 0.6s ease-in
+=======
+                transition: height 0.4s ease-in
+>>>>>>> Stashed changes
                 .users-list::-webkit-scrollbar
                     display: none
                 .users-list
@@ -52,7 +67,11 @@
                     .user-tag
                         height: 70px
                         width: 100%
+<<<<<<< Updated upstream
                         background-color: #ffffff
+=======
+                        background-color: $white
+>>>>>>> Stashed changes
                         border-radius: 10px
                         border-left: 3px solid $primary
                         box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.61)
@@ -108,7 +127,11 @@
                     width: 100%
                     background-color: $dark
                     border-radius: 3px
+<<<<<<< Updated upstream
                     transition: transform 0.7s
+=======
+                    transition: transform 0.2s
+>>>>>>> Stashed changes
             .order-card-menu.active-menu
                 .line-top
                     transform: rotate(45deg) translate(6px, 6px)
@@ -119,7 +142,11 @@
                     transform: rotate(-45deg) translate(3px, -3px)
                     background-color: $primary 
         .order-card-mid
+<<<<<<< Updated upstream
             height: 50%
+=======
+            min-height: 125px
+>>>>>>> Stashed changes
             width: 100%
             padding: 0.5em 1em
             display: flex
@@ -158,7 +185,11 @@
                         height: 100%
                         width: 100%
         .order-card-bottom
+<<<<<<< Updated upstream
             height: 30%
+=======
+            min-height: 75px
+>>>>>>> Stashed changes
             width: 100%
             padding: 0.5em 1em
             display: flex
@@ -187,6 +218,64 @@
                     background-color: $primary
                     color: $white
                     cursor: pointer
+<<<<<<< Updated upstream
+=======
+        .order-card-details
+            height: auto
+            width: 100%
+            display: flex
+            flex-direction: column
+            justify-content: space-evenly
+            .customer-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: flex-start
+                padding: 0.5em
+                gap: 0.5em
+                .info-item
+                    width: 100%
+                    border: 1px solid black
+                    padding: 0 1em 0 0
+                    display: flex
+                    align-items: center
+                    gap: 5px
+                    p
+                        font-family: $font01
+                        font-size: 0.8rem
+                        font-weight: 600
+                        color: $dark
+                        text-align: left
+            .order-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: flex-start
+                padding: 0.5em
+                gap: 0.5em
+                p
+                    font-family: $font01
+                    font-size: 0.8rem
+                    font-weight: 500
+                    color: $dark
+                    text-align: left
+            .delivery-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                padding: 0.5em
+                gap: 0.5em
+                p
+                    font-family: $font01
+                    font-size: 0.9rem
+                    font-weight: 600
+                    color: $dark
+                    text-align: left
+>>>>>>> Stashed changes
 @media screen and (max-width:1197px)
     .main-content
         justify-content: center
