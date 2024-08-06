@@ -1,13 +1,8 @@
-<!-- MenuDelivery.vue -->
 <template>
   <div :class="['menu', { visible: isVisible }]">
     <nav>
       <div class="menu-items">
-<<<<<<< Updated upstream
-        <router-link class="link-icon" to="enrutamiento">
-=======
         <router-link class="link-icon" :to="{ name: 'RoutingLayout' }">
->>>>>>> Stashed changes
           <div class="menu-item" :class="{ active: isActiveIcon('enrutamiento') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> signpost </span>
@@ -16,11 +11,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-<<<<<<< Updated upstream
-        <router-link class="link-icon" to="domicilios">
-=======
         <router-link class="link-icon" :to="{ name: 'AdminDeliveriesLayout' }">
->>>>>>> Stashed changes
           <div class="menu-item" :class="{ active: isActiveIcon('domicilios') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> shopping_bag </span>
@@ -29,12 +20,8 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-<<<<<<< Updated upstream
-        <router-link class="link-icon" to="perfil">
-=======
 
         <router-link class="link-icon" :to="{ name: 'ProfileViewAdmin' }">
->>>>>>> Stashed changes
           <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">person</span>
@@ -43,14 +30,9 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-<<<<<<< Updated upstream
-        <router-link class="link-icon" to="/">
-          <div class="menu-item">
-=======
 
         <router-link class="link-icon" :to="{ name: 'AdminStreetLayout' }">
           <div class="menu-item" :class="{ active: isActiveIcon('barrios') }">
->>>>>>> Stashed changes
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">map</span>
               <p>Barrios</p>
@@ -58,7 +40,6 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-<<<<<<< Updated upstream
         <router-link class="link-icon" to="/">
           <div class="menu-item">
             <div class="menu-item-nav">
@@ -77,24 +58,6 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-=======
-
-        <div class="menu-item">
-          <div class="menu-item-nav">
-            <span class="material-symbols-outlined">settings</span>
-            <p>Configuración</p>
-          </div>
-          <span class="material-symbols-outlined">chevron_right</span>
-        </div>
-
-        <div class="menu-item">
-          <div class="menu-item-nav">
-            <span class="material-symbols-outlined">logout</span>
-            <p>Salir</p>
-          </div>
-          <span class="material-symbols-outlined">chevron_right</span>
-        </div>
->>>>>>> Stashed changes
       </div>
     </nav>
   </div>

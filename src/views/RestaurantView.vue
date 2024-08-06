@@ -2,8 +2,7 @@
 <script setup>
 import { ref } from 'vue';
 import HeaderApp from '../components/HeaderApp.vue';
-import MenuDelivery from '../components/MenuDelivery.vue';
-
+import MenuAdmin from '../components/MenuRestaurant.vue';
 
 // Crear un estado de visibilidad para el menú
 const isMenuVisible = ref(false);
@@ -20,7 +19,7 @@ const toggleMenuVisibility = () => {
       <div class="router-view">
         <RouterView />
     </div>
-      <MenuDelivery :isVisible="isMenuVisible" />
+      <MenuAdmin :isVisible="isMenuVisible" />
     </div>
   </main>
 </template>

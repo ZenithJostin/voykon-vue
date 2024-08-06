@@ -73,5 +73,5 @@ const addresses = testAddress.addresses
 </script>
 
 <style>
-@import url(../css/forms.sass);
+@import url(/src/css/forms.sass);
 </style>

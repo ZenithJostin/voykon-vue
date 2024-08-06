@@ -13,6 +13,8 @@ export const users = ref([
         user_age:28,
         user_description:"Hola soy Juan y me encanta trabajar para Voykon",
         user_status:1,
+        user_address:"Calle 1#10-04 c.c. La casona",
+        user_check:true,
     },
     {   
         user_logged: false,
@@ -25,5 +27,7 @@ export const users = ref([
         user_age:28,
         user_description:"Hola soy Juan y me encanta trabajar para Voykon",
         user_status:1,
+        user_address:"Calle 1#10-04 c.c. La casona 2",
+        user_check:true,
     }
 ])

@@ -1,0 +1,183 @@
+@import "variables.sass"
+
+.login-view
+	display: flex
+	width: 100vw
+	flex-direction: row
+	min-height: 100vh
+	flex-wrap: no-wrap
+	height: 100vh
+	.first-view-login
+		min-width: 55vw
+		height: 100%
+		padding: 2rem
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		background-size: cover
+		background-position: center
+		background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("/src/assets/images/background-login.jpg")
+		.logo-main
+			width: 80%
+			.logo-d
+				width: 100%
+				display: inline-block
+			.logo-m
+				display: none
+		.title
+			h3
+				color: $primary
+				font-size: 4em
+				font-weight: 600
+				font-style: italic
+				span
+					font-weight: 900
+	.second-view-login
+		min-width: 45vw
+		height: 100%
+		padding: 2rem
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		background: $lightgrey
+		box-shadow: 0px 0px 30px #0000002c
+		.content-second
+			width: 60%
+			.title-form
+				margin-bottom: 20px
+				h3
+					text-align: center
+					font-size: 2.5em
+					color: $primary
+					font-style: italic
+			.form-login
+				width: 100%
+				.form-field
+					width: 100%
+					background-color: $white
+					padding: 10px 10px
+					margin-bottom: 10px
+					border-radius: 10px
+					display: flex
+					border: 2px solid $white
+					label
+						margin-right: 20px
+					input
+						font-weight: 700
+						border: none
+						font-size: 1em
+						width: 100%
+						outline: none
+					input:focus
+						border: none
+						outline: none
+					&:focus-within
+						border: 2px solid $primary
+				.check-remember
+					width: 100%
+					margin-top: 20px
+					margin-bottom: 20px
+					display: flex
+					align-items: center
+					flex-wrap: wrap
+					gap: 10px
+					justify-content: space-between
+					.btn-check
+						display: flex
+						align-items: center
+						input
+							margin-right: 10px
+							transform: scale(1.3)
+						label
+							font-weight: 600
+							font-size: 0.9em
+							font-style: italic
+					a
+						font-style: italic
+						font-weight: 600
+						color: $dark
+						transition: .4s
+						font-size: 0.9em
+					a:hover
+						color: $primary
+				.btn-submit
+					width: 100%
+					display: flex
+					justify-content: center
+					input
+						background: $primary
+						color: $white
+						font-weight: 600
+						font-style: italic
+						font-size: 1em
+						outline: none
+						border: none
+						padding: 10px 30px
+						border-radius: 40px
+						cursor: pointer
+
+@media screen and (max-width:950px)
+	.login-view
+		height: auto
+		flex-wrap: wrap
+		.first-view-login
+			height: auto
+			padding: 1rem
+			min-width: 100vw
+			.logo-main
+				width: 100%
+				display: flex
+				justify-content: center
+				.logo-d
+					width: 100%
+					display: none
+				.logo-m
+					width: 120px
+					display: inline-block
+			.title
+				br
+					display: none
+				h3
+					font-size: 2em
+					text-align: center
+		.second-view-login
+			height: auto
+			min-width: 100vw
+			.content-second
+				width: 80%
+				.title-form
+					h3
+						font-size: 2em
+
+@media screen and (max-width:500px)
+	.login-view
+		height: auto
+		.first-view-login
+			height: auto
+			min-width: 100vw
+			.logo-main
+				width: 100%
+				display: flex
+				justify-content: center
+				.logo-d
+					width: 100%
+					display: none
+				.logo-m
+					width: 80px
+					display: inline-block
+			.title
+				br
+					display: none
+				h3
+					font-size: 1.5em
+					text-align: center
+		.second-view-login
+			height: auto
+			min-width: 100vw
+			.content-second
+				width: 100%
+				.title-form
+					h3
+						font-size: 1.5em

@@ -1,7 +1,12 @@
 <template>
     <div class="addresses-registration-section">
-      <div class="form-container">
+      <div class="title-container">
         <h1>Registro de barrios</h1>
+        <router-link :to="{ name: 'AdminStreetLayout' }">
+          <button class="back-btn" type="button">Volver a la lista</button>
+        </router-link>
+      </div>
+      <div class="form-container">
           <form action="#">
             <div class="info-field dep-city-field">
               <label for="department">Departamento: </label>
@@ -1361,6 +1366,6 @@
   </script>
   
   <style>
-  @import url(../css/forms.sass);
+  @import url(/src/css/forms.sass);
   </style>
   

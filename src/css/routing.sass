@@ -4,19 +4,15 @@
     height: 100%
     width: 100%
     display: flex
-    justify-content: flex-start
-    align-items: center
+    align-items: flex-start
     flex-wrap: wrap
     gap: 2rem
     padding: 2rem 2.5rem
-<<<<<<< Updated upstream
-=======
     .order-card-admin.extended-details
-        height: auto
->>>>>>> Stashed changes
+        height: 450px
     .order-card-admin
         height: 250px
-        width: 400px
+        width: 310px
         min-height: 200px
         min-width: 250px
         background-color: $white
@@ -24,14 +20,9 @@
         box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
         display: flex
         flex-direction: column
-<<<<<<< Updated upstream
-        .order-card-top
-            height: 20%
-=======
-        overflow: hidden
+        transition: 0.7s
         .order-card-top
             min-height: 50px
->>>>>>> Stashed changes
             width: 100%
             padding: 0 1em
             display: flex
@@ -40,7 +31,7 @@
             position: relative
             .user-assignment-container
                 height: 0px
-                width: 300px
+                width: 280px
                 background-color: $white
                 position: absolute
                 top: 85%
@@ -52,11 +43,7 @@
                 align-items: center
                 justify-content: space-evenly
                 z-index: 2
-<<<<<<< Updated upstream
-                transition: all 0.6s ease-in
-=======
-                transition: height 0.4s ease-in
->>>>>>> Stashed changes
+                transition: 0.5s
                 .users-list::-webkit-scrollbar
                     display: none
                 .users-list
@@ -67,11 +54,7 @@
                     .user-tag
                         height: 70px
                         width: 100%
-<<<<<<< Updated upstream
-                        background-color: #ffffff
-=======
                         background-color: $white
->>>>>>> Stashed changes
                         border-radius: 10px
                         border-left: 3px solid $primary
                         box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.61)
@@ -87,13 +70,13 @@
                             max-width: 55px
                             border-radius: 50%
                             overflow: hidden
-                            border: 1px solid #000
+                            box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.61)
                             img
                                 height: 100%
                                 width: 100%
                         .user-tag-name
                             font-family: $font01
-                            font-size: 1rem
+                            font-size: 0.9rem
                             font-weight: 600
                             color: $dark
                             text-align: left
@@ -127,11 +110,7 @@
                     width: 100%
                     background-color: $dark
                     border-radius: 3px
-<<<<<<< Updated upstream
-                    transition: transform 0.7s
-=======
                     transition: transform 0.2s
->>>>>>> Stashed changes
             .order-card-menu.active-menu
                 .line-top
                     transform: rotate(45deg) translate(6px, 6px)
@@ -140,22 +119,18 @@
                     display: none
                 .line-bottom
                     transform: rotate(-45deg) translate(3px, -3px)
-                    background-color: $primary 
+                    background-color: $primary
         .order-card-mid
-<<<<<<< Updated upstream
-            height: 50%
-=======
             min-height: 125px
->>>>>>> Stashed changes
             width: 100%
             padding: 0.5em 1em
             display: flex
-            .top-section-left
+            .mid-section-left
                 flex: 2
                 display: flex
                 flex-direction: column
                 justify-content: center
-                align-items: center
+                align-items: flex-start
                 text-align: center
                 gap: 10px
                 .order-restaurant-name
@@ -163,16 +138,16 @@
                     font-size: 1.5rem
                     font-weight: 700
                     color: $primary
-                    text-align: center
+                    text-align: left
                 .order-address
                     font-family: $font01
                     font-size: 1rem
                     font-weight: 500
                     color: $dark
-            .top-section-right
+            .mid-section-right
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-end
                 align-items: center
                 padding: 10px
                 .order-restaurant-image
@@ -185,18 +160,14 @@
                         height: 100%
                         width: 100%
         .order-card-bottom
-<<<<<<< Updated upstream
-            height: 30%
-=======
             min-height: 75px
->>>>>>> Stashed changes
             width: 100%
             padding: 0.5em 1em
             display: flex
             .order-time
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-start
                 align-items: center
                 p
                     font-family: $font01
@@ -206,26 +177,28 @@
             .order-details
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-end
                 align-items: center
                 .order-details-btn
-                    padding: 0.7rem 1.5rem
+                    padding: 0.6rem 1rem
                     font-family: $font01
-                    font-size: 1rem
+                    font-size: 0.9rem
                     font-weight: 600
                     border: none
                     border-radius: 50px
                     background-color: $primary
                     color: $white
                     cursor: pointer
-<<<<<<< Updated upstream
-=======
+        .order-card-details::-webkit-scrollbar
+            display: none
         .order-card-details
             height: auto
             width: 100%
             display: flex
             flex-direction: column
             justify-content: space-evenly
+            overflow: scroll
+            padding: 0 1em
             .customer-info
                 flex: 1
                 display: flex
@@ -234,19 +207,22 @@
                 align-items: flex-start
                 padding: 0.5em
                 gap: 0.5em
+                border-bottom: 2px solid $primary
                 .info-item
                     width: 100%
-                    border: 1px solid black
-                    padding: 0 1em 0 0
                     display: flex
+                    justify-content: space-between
                     align-items: center
-                    gap: 5px
                     p
                         font-family: $font01
                         font-size: 0.8rem
                         font-weight: 600
                         color: $dark
                         text-align: left
+                    a
+                        font-size: 1.1rem
+                        text-decoration: none
+                        color: $dark
             .order-info
                 flex: 1
                 display: flex
@@ -255,10 +231,11 @@
                 align-items: flex-start
                 padding: 0.5em
                 gap: 0.5em
+                border-bottom: 2px solid $primary
                 p
                     font-family: $font01
                     font-size: 0.8rem
-                    font-weight: 500
+                    font-weight: 600
                     color: $dark
                     text-align: left
             .delivery-info
@@ -275,7 +252,34 @@
                     font-weight: 600
                     color: $dark
                     text-align: left
->>>>>>> Stashed changes
+                button
+                    font-family: $font01
+                    font-size: 0.9rem
+                    font-weight: 600
+                .delivered
+                    background-color: #5de05b31
+                    color: #19D315
+                    border: 2px solid #19D315
+                    border-radius: 20px
+                    padding: 3px 10px
+                .not-delivered
+                    background-color: #e2636369
+                    color: #CC0E0E
+                    border: 2px solid #CC0E0E
+                    border-radius: 20px
+                    padding: 3px 10px
+                .picked-up
+                    background-color: #a3def770
+                    color: #2BBEFF
+                    border: 2px solid #2BBEFF
+                    border-radius: 20px
+                    padding: 3px 10px
+                .being-delivered
+                    background-color: #f8b0756e
+                    color: #FB8A2E
+                    border: 2px solid #FB8A2E
+                    border-radius: 20px
+                    padding: 3px 10px
 @media screen and (max-width:1197px)
     .main-content
         justify-content: center
@@ -284,4 +288,6 @@
         padding: 0.5rem 0.8rem !important
         font-size: 0.9rem !important
     .user-assignment-container
-        width: 250px !important
+        width: 230px !important
+        .user-tag-name
+            font-size: 0.8em !important
