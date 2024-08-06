@@ -1,18 +1,18 @@
 @import "variables.sass"
 .orders-container
-    height: 100%
     width: 100%
     display: flex
     justify-content: flex-start
     align-items: center
     flex-wrap: wrap
-    gap: 1rem
-    padding: 2rem 2.5rem
+    padding: 2rem
     .order-card
         height: 200px
-        width: 400px
+        width: 31%
         min-height: 200px
-        min-width: 250px
+        min-width: 300px
+        margin: 1%
+        margin-bottom: 20px
         background-color: $white
         border-radius: 10px
         box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
@@ -88,11 +88,17 @@
                     background-color: $primary 
                     color: $white
                     cursor: pointer
-@media screen and (max-width:1197px)
+@media screen and (max-width:950px)
     .orders-container
         justify-content: center
-@media screen and (max-width:380px)
+        .order-card
+            width: 45%
+@media screen and (max-width:500px)
+    .orders-container
+        .order-card
+            width: 90%
+    
     .order-details-btn
         padding: 0.5rem 0.8rem !important
         font-size: 0.9rem !important
-                
+    

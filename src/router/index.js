@@ -1,13 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
+
+// Delivery
 import DeliveryView from '../views/DeliveryView.vue'
-import OrdersLayout from '../layouts/OrdersLayout.vue'
-import ProfileView from '../views/ProfileView.vue'
+import OrdersDelivery from '../layouts/delivery/OrdersDeliveryLayout.vue'
+import ProfileView from '../layouts/delivery/ProfileDeliveryLayout.vue'
+
+// Admin
 import AdminView from '../views/AdminView.vue'
-import RoutingLayout from '../layouts/RoutingLayout.vue'
-import AdminProfileView from '../layouts/AdminProfileLayout.vue'
+import RoutingLayout from '../layouts/admin/RoutingLayout.vue'
+import AdminProfileLayout from '../layouts/admin/AdminProfileLayout.vue'
 import AdminDeliveriesLayout from '../layouts/DeliveriesLayout.vue'
+
+// Restaurant
+import RestaurantView from '../views/RestaurantView.vue'
+import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
+import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,13 +33,18 @@ const router = createRouter({
       children: [
         {
           path: "",
-          name: "FirstView",
+          name: "FirstViewDelivery",
           redirect: "/repartidor/pedidos",
-        }, 
+        },
         {
           path: "perfil",
           name: "ProfileView",
           component: ProfileView,
+        },
+        {
+          path: 'pedidos',
+          name: 'OrdersDelivery',
+          component: OrdersDelivery,
         },
       ],
     },
@@ -38,19 +52,12 @@ const router = createRouter({
       path: '/repartidor/:ParamMenu',
       name: 'DeliveryParam',
       component: DeliveryView,
-      children: [
-        {
-          path: '/repartidor/pedidos',
-      name: 'OrdersLayout',
-      component: OrdersLayout,
-        },
-      ],
     },
     {
       path: "/administrador",
       name: "administrador",
       component: AdminView,
-      children:[
+      children: [
         {
           path: "",
           name: "FirstViewAdmin",
@@ -64,13 +71,34 @@ const router = createRouter({
         {
           path: "perfil",
           name: "ProfileViewAdmin",
-          component: AdminProfileView,
+          component: AdminProfileLayout,
         },
         {
           path: "domicilios",
           name: "AdminDeliveriesLayout",
           component: AdminDeliveriesLayout,
         },
+      ]
+    },
+    {
+      path: "/restaurante",
+      name: "restaurante",
+      component: RestaurantView,
+      children: [
+        {
+          path: "",
+          name: "FirstViewRestaurant",
+          redirect: "/restaurante/pedidos",
+        },{
+          path: "pedidos",
+          name: "OrdersRestaurant",
+          component: RestaurantOrders,
+        },
+        {
+          path: "perfil",
+          name: "ProfileRestaurant",
+          component: RestaurantProfile,
+        }
       ]
     }
   ]
