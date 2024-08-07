@@ -11,15 +11,16 @@ import ProfileView from '../layouts/delivery/ProfileDeliveryLayout.vue'
 
 // Admin
 import AdminView from '../views/AdminView.vue'
-import RoutingLayout from '../layouts/admin/RoutingLayout.vue'
+import AdminRoutingLayout from '../layouts/admin/AdminRoutingLayout.vue'
 import AdminProfileLayout from '../layouts/admin/AdminProfileLayout.vue'
-import AdminDeliveriesLayout from '../layouts/DeliveriesLayout.vue'
+import AdminDeliveriesLayout from '../layouts/admin/AdminDeliveriesLayout.vue'
+import AdminStreetLayout from '../layouts/admin/AdminStreetLayout.vue'
+import AdminStreetRegistrationLayout from '../layouts/admin/AdminStreetRegistrationLayout.vue'
 
 // Restaurant
 import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
-import MenuRestaurant from '../layouts/restaurant/MenuRestaurantLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,7 +75,7 @@ const router = createRouter({
         {
           path: "enrutamiento",
           name: "RoutingLayout",
-          component: RoutingLayout,
+          component: AdminRoutingLayout,
         },
         {
           path: "perfil",
@@ -85,6 +86,16 @@ const router = createRouter({
           path: "domicilios",
           name: "AdminDeliveriesLayout",
           component: AdminDeliveriesLayout,
+        },
+        {
+          path: "barrios",
+          name: "AdminStreetLayout",
+          component: AdminStreetLayout,
+        },
+        {
+          path: "barrios/registro",
+          name: "AdminStreetRegistration",
+          component: AdminStreetRegistrationLayout,
         },
       ]
     },
@@ -107,11 +118,11 @@ const router = createRouter({
           name: "ProfileRestaurant",
           component: RestaurantProfile,
         },
-        {
-          path: "menu",
-          name: "MenuRestaurant",
-          component: MenuRestaurant,
-        }
+        // {
+        //   path: "menu",
+        //   name: "MenuRestaurant",
+        //   component: MenuRestaurant,
+        // }
       ]
     }
   ]

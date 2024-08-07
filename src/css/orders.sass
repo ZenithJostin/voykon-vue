@@ -1,26 +1,118 @@
 @import "variables.sass"
 .orders-container
+    height: 100%
     width: 100%
     display: flex
-    justify-content: flex-start
-    align-items: center
+    align-items: flex-start
     flex-wrap: wrap
-    padding: 2rem
+    gap: 2rem
+    padding: 2rem 2.5rem
+    .order-card.extended-details
+        height: 450px
     .order-card
         height: 200px
-        width: 31%
+        width: 310px
         min-height: 200px
-        min-width: 300px
-        margin: 1%
-        margin-bottom: 20px
+        min-width: 250px
         background-color: $white
         border-radius: 10px
         box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
         display: flex
         flex-direction: column
-        overflow: hidden
+        transition: 0.7s
+        .user-assignment-container
+            height: 0px
+            width: 280px
+            background-color: $white
+            position: absolute
+            top: 85%
+            border-radius: 10px 0 10px 10px
+            overflow: hidden
+            padding: 0.5em 1em
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: space-evenly
+            z-index: 2
+            transition: 0.5s
+            .users-list::-webkit-scrollbar
+                display: none
+                .users-list
+                    height: 85%
+                    width: 100%
+                    overflow: auto
+                    padding: 0 5px
+                    .user-tag
+                        height: 70px
+                        width: 100%
+                        background-color: $white
+                        border-radius: 10px
+                        border-left: 3px solid $primary
+                        box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.61)
+                        margin: 10px 0
+                        padding: 0 10px
+                        display: flex
+                        align-items: center
+                        justify-content: flex-start
+                        gap: 7px
+                        cursor: pointer
+                        .user-tag-picture
+                            max-height: 55px
+                            max-width: 55px
+                            border-radius: 50%
+                            overflow: hidden
+                            box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.61)
+                            img
+                                height: 100%
+                                width: 100%
+                        .user-tag-name
+                            font-family: $font01
+                            font-size: 0.9rem
+                            font-weight: 600
+                            color: $dark
+                            text-align: left
+                .assign-user-btn
+                    padding: 0.3rem 0.7rem
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 500
+                    border: none
+                    border-radius: 50px
+                    background-color: $primary
+                    color: $white
+                    cursor: pointer
+                    display: none
+            .user-assignment-container.active
+                height: 400px
+                box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.61)
+                border-top: 4px solid $primary
+                .assign-user-btn
+                    display: block
+            .order-card-menu
+                height: 32px
+                width: 27px
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: space-evenly
+                cursor: pointer
+                .menu-line
+                    height: 4px
+                    width: 100%
+                    background-color: $dark
+                    border-radius: 3px
+                    transition: transform 0.2s
+            .order-card-menu.active-menu
+                .line-top
+                    transform: rotate(45deg) translate(6px, 6px)
+                    background-color: $primary
+                .line-mid
+                    display: none
+                .line-bottom
+                    transform: rotate(-45deg) translate(3px, -3px)
+                    background-color: $primary
         .order-card-top
-            height: 60%
+            min-height: 125px
             width: 100%
             padding: 0.5em 1em
             display: flex
@@ -29,15 +121,14 @@
                 display: flex
                 flex-direction: column
                 justify-content: center
-                align-items: center
-                text-align: center
+                align-items: flex-start
                 gap: 10px
                 .order-restaurant-name
                     font-family: $font01
                     font-size: 1.5rem
                     font-weight: 700
                     color: $primary
-                    text-align: center
+                    text-align: left
                 .order-address
                     font-family: $font01
                     font-size: 1rem
@@ -46,7 +137,7 @@
             .top-section-right
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-end
                 align-items: center
                 padding: 10px
                 .order-restaurant-image
@@ -59,14 +150,14 @@
                         height: 100%
                         width: 100%
         .order-card-bottom
-            height: 40%
+            min-height: 75px
             width: 100%
             padding: 0.5em 1em
             display: flex
             .order-time
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-start
                 align-items: center
                 p
                     font-family: $font01
@@ -76,29 +167,124 @@
             .order-details
                 flex: 1
                 display: flex
-                justify-content: center
+                justify-content: flex-end
                 align-items: center
                 .order-details-btn
-                    padding: 0.7rem 1.5rem
+                    padding: 0.6rem 1rem
                     font-family: $font01
-                    font-size: 1rem
+                    font-size: 0.9rem
                     font-weight: 600
                     border: none
                     border-radius: 50px
-                    background-color: $primary 
+                    background-color: $primary
                     color: $white
                     cursor: pointer
-@media screen and (max-width:950px)
-    .orders-container
+        .order-card-details::-webkit-scrollbar
+            display: none
+        .order-card-details
+            height: auto
+            width: 100%
+            display: flex
+            flex-direction: column
+            justify-content: space-evenly
+            overflow: scroll
+            padding: 0 1em
+            .customer-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: flex-start
+                padding: 0.5em
+                gap: 0.5em
+                border-bottom: 2px solid $primary
+                .info-item
+                    width: 100%
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    p
+                        font-family: $font01
+                        font-size: 0.8rem
+                        font-weight: 600
+                        color: $dark
+                        text-align: left
+                    a
+                        font-size: 1.1rem
+                        text-decoration: none
+                        color: $dark
+            .order-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: flex-start
+                padding: 0.5em
+                gap: 0.5em
+                border-bottom: 2px solid $primary
+                p
+                    font-family: $font01
+                    font-size: 0.8rem
+                    font-weight: 600
+                    color: $dark
+                    text-align: left
+            .delivery-info
+                flex: 1
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                padding: 0.5em
+                gap: 0.5em
+                p
+                    font-family: $font01
+                    font-size: 0.9rem
+                    font-weight: 600
+                    color: $dark
+                    text-align: left
+                button
+                    font-family: $font01
+                    font-size: 0.9rem
+                    font-weight: 600
+                .delivered
+                    background-color: #5de05b31
+                    color: #19D315
+                    border: 2px solid #19D315
+                    border-radius: 20px
+                    padding: 3px 10px
+                .not-delivered
+                    background-color: #e2636369
+                    color: #CC0E0E
+                    border: 2px solid #CC0E0E
+                    border-radius: 20px
+                    padding: 3px 10px
+                .picked-up
+                    background-color: #a3def770
+                    color: #2BBEFF
+                    border: 2px solid #2BBEFF
+                    border-radius: 20px
+                    padding: 3px 10px
+                .being-delivered
+                    background-color: #f8b0756e
+                    color: #FB8A2E
+                    border: 2px solid #FB8A2E
+                    border-radius: 20px
+                    padding: 3px 10px
+                .cancel-order-btn
+                    background-color: #e2636369
+                    color: #CC0E0E
+                    border: 2px solid #CC0E0E
+                    border-radius: 20px
+                    padding: 3px 10px
+                    cursor: pointer
+@media screen and (max-width:1197px)
+    .main-content
         justify-content: center
-        .order-card
-            width: 45%
-@media screen and (max-width:500px)
-    .orders-container
-        .order-card
-            width: 90%
-    
+@media screen and (max-width:380px)
     .order-details-btn
         padding: 0.5rem 0.8rem !important
         font-size: 0.9rem !important
-    
+    .user-assignment-container
+        width: 230px !important
+        .user-tag-name
+            font-size: 0.8em !important

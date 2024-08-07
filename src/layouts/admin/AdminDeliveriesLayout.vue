@@ -71,7 +71,6 @@
 <script setup>
 import * as testorders from '/src/composables/testOrders.js'
 import * as testUsers from '/src/composables/testUser.js'
-import { ref } from 'vue'
 
 const orders = testorders.orders
 const users = testUsers.users
@@ -94,5 +93,5 @@ const getStatusClass = (orderStatus) => {
 </script>
 
 <style>
-@import url('../css/deliveries.sass');
+@import url('src/css/deliveries.sass');
 </style>

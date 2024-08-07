@@ -1,0 +1,229 @@
+@import "variables.sass"
+
+.addresses-section
+    height: auto
+    width: 100%
+    min-width: 350px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    padding: 1em 2em
+    gap: 1em
+    .addresses-container
+        height: auto
+        width: 100%
+        display: flex
+        flex-direction: column
+        .title-container
+            height: auto
+            width: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 1em 0
+            h1
+                font-family: $font01
+                font-size: 3em
+                font-weight: 800
+                color: $primary
+            button
+                padding: 0.7rem 1.5rem
+                font-family: $font01
+                font-size: 1rem
+                font-weight: 600
+                border: none
+                border-radius: 50px
+                background-color: #e70364
+                color: #ffffff
+                cursor: pointer
+        .table-container::-webkit-scrollbar
+            display: none
+        .table-container
+            height: 700px
+            width: 100%
+            overflow: scroll
+            box-shadow: -2px 2px 4px 1px rgba(94, 94, 94, 0.75)
+            .addresses-table
+                width: 100%
+                border-collapse: collapse
+                thead
+                    tr
+                        height: 50px
+                        font-family: $font01
+                        font-size: 1em
+                        color: $white
+                        background-color: $primary
+                        text-align: center
+                tbody
+                    tr
+                        text-align: center
+                        td
+                            padding: 5px
+                            p
+                                font-family: $font01
+                                font-size: 0.9em
+                                font-weight: 600
+                                color: $dark
+                    tr:nth-of-type(odd)
+                        background-color: $lightgrey
+                    .table-actions
+                        display: flex
+                        align-items: center
+                        justify-content: space-evenly
+                        button
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            padding: 4px 3px
+                            font-family: $font01
+                            font-size: 1rem
+                            border: none
+                            border-radius: 7px
+                            background-color: $primary
+                            color: $white
+                            cursor: pointer
+.addresses-registration-section
+    height: auto
+    width: 100%
+    min-width: 350px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 1em 0
+    position: relative
+    .title-container
+        height: auto
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        h1
+            font-family: $font01
+            font-size: 3.5em
+            font-weight: 800
+            color: $primary
+            text-align: center
+        .back-btn
+            padding: 0.5rem 1rem
+            font-family: $font01
+            font-size: 0.9rem
+            font-weight: 600
+            border: none
+            border-radius: 50px
+            background-color: $primary
+            color: $white
+            cursor: pointer
+    .form-container
+        height: auto
+        width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        form
+            height: 100%
+            width: 100%
+            .info-field
+                height: auto
+                width: 100%
+                padding: 1em
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                .map-container
+                    height: auto
+                    width: 100%
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    justify-content: center
+                    h2
+                        font-family: $font01
+                        font-size: 1.1rem
+                        font-weight: 700
+                        color: $dark
+                    #map
+                        height: 250px
+                        width: 100%
+                        max-width: 500px
+                        margin-top: 7px
+                        box-shadow: -2px 2px 4px 1px rgba(94, 94, 94, 0.75)
+                        z-index: 1
+                label
+                    font-family: $font01
+                    font-size: 1.1rem
+                    font-weight: 700
+                    color: $dark
+                input
+                    height: 45px
+                    width: 100%
+                    max-width: 500px
+                    border: 2px solid #fc116b
+                    border-radius: 10px
+                    padding: 10px
+                    margin-top: 7px
+                    box-shadow: -2px 2px 4px 1px rgba(94, 94, 94, 0.75)
+                input:focus
+                    border: 2px solid #fc116b
+                    outline: none
+                select
+                    height: 45px
+                    width: 100%
+                    max-width: 500px
+                    border: 2px solid #fc116b
+                    border-radius: 10px
+                    padding: 10px
+                    margin-top: 7px
+                    box-shadow: -2px 2px 4px 1px rgba(94, 94, 94, 0.75)
+                select:focus
+                    border: 2px solid #fc116b
+                    outline: none
+                .long-lat-container
+                    width: 100%
+                    padding: 1em 0
+                    gap: 1em
+                    display: flex
+                    display: none
+                    input
+                        width: 50%
+            .dep-city-field
+                label
+                    margin-top: 7px
+            .button-field
+                height: auto
+                width: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+                .street-submit-btn
+                    padding: 0.7rem 1.5rem
+                    font-family: $font01
+                    font-size: 1rem
+                    font-weight: 600
+                    border: none
+                    border-radius: 50px
+                    background-color: $primary
+                    color: $white
+                    cursor: pointer
+
+@media screen and (max-width:600px)
+    .addresses-section
+        gap: 1em
+        .title-container
+            align-items: flex-start !important
+            flex-direction: column
+            h1
+                font-size: 2em !important
+            button
+                padding: 0.5rem 1rem !important
+                font-size: 0.9rem !important
+    .addresses-registration-section
+        gap: 1em
+        .title-container
+            h1
+                font-size: 2em !important
+            button
+                padding: 0.3rem 0.9rem !important
+                font-size: 0.8rem !important

@@ -2,7 +2,7 @@
   <div :class="['menu', { visible: isVisible }]">
     <nav>
       <div class="menu-items">
-        <router-link class="link-icon" to="enrutamiento">
+        <router-link class="link-icon" :to="{ name: 'RoutingLayout' }">
           <div class="menu-item" :class="{ active: isActiveIcon('enrutamiento') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> signpost </span>
@@ -11,7 +11,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="domicilios">
+        <router-link class="link-icon" :to="{ name: 'AdminDeliveriesLayout' }">
           <div class="menu-item" :class="{ active: isActiveIcon('domicilios') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined"> shopping_bag </span>
@@ -20,7 +20,8 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="perfil">
+
+        <router-link class="link-icon" :to="{ name: 'ProfileViewAdmin' }">
           <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">person</span>
@@ -29,8 +30,9 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="/">
-          <div class="menu-item">
+
+        <router-link class="link-icon" :to="{ name: 'AdminStreetLayout' }">
+          <div class="menu-item" :class="{ active: isActiveIcon('barrios') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">map</span>
               <p>Barrios</p>
