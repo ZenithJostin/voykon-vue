@@ -3,6 +3,7 @@
     <div class="home-test">
       <div class="txt-main">
         Esta fuera de la aplicación <br>
+      <RouterLink to="/menu">Menu</RouterLink> <br>
       <RouterLink to="/repartidor">Repartidor</RouterLink> <br>
       <RouterLink to="/administrador">Administrador</RouterLink><br>
       <RouterLink to="/restaurante">Restaurante</RouterLink>
