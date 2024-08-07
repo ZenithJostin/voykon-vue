@@ -26,8 +26,6 @@ import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue
 //Menu
   //Layouts
 import MenuLayout from '../layouts/menu/Layouts/MenuLayout.vue'
-import RestaurantMain from '../layouts/menu/Views/RestaurantMain.vue'
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -135,14 +133,7 @@ const router = createRouter({
     {
       path: '/menu',
       name: 'Menu layout',
-      component: MenuLayout,
-      children: [
-        {
-          path: ":RestaurantId",
-          name: "MenuRestaurant",
-          component: RestaurantMain,
-        }
-      ]
+      component: MenuLayout
     }
   ]
 })
