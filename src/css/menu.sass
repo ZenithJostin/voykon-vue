@@ -1,1 +1,104 @@
-@import url(./variables.sass)
+@import "variables.sass"
+
+img
+  max-width: 100%
+header
+  display: flex
+  flex-direction: column
+  margin-bottom: 20px
+  .header-banner
+    height: 250px
+    width: 100%
+    position: relative
+    overflow: hidden
+    img
+      position: absolute
+      object-fit: cover
+      object-position: top
+      filter: blur(1px)
+    .restaurant-status
+      position: absolute
+      top: 20px
+      right: 20px
+      background-color: rgba(0, 0, 0, .6)
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 3px 10px
+      border-radius: 5px
+      font-size: .8rem
+      color: #FFF
+      i
+        font-size: 1.2rem
+        margin-right: 5px
+        &.red
+          color: #FF0000
+        &.green
+          color: #00FF00
+  .header-info
+    display: flex
+    justify-content: space-between
+    padding: 0 30px
+    .restaurant-info
+      display: flex
+      align-items: flex-end
+      margin-top: -80px
+      z-index: 10
+      .brand
+        border-radius: 15px
+        overflow: hidden
+        width: 150px
+        aspect-ratio: 1/1
+        img
+          object-fit: cover
+          object-position: center
+      .info
+        display: flex
+        flex-direction: column
+        margin-left: 15px
+        .info-row  
+          display: flex
+          justify-content: flex-start
+          flex-direction: row
+          align-items: center
+          gap: 10px
+          h2
+            font-size: 1.5rem
+            margin-bottom: 0
+            font-weight: 600
+          span
+            cursor: pointer
+            transition: .3s
+            &:hover
+              color: $primary
+              transition: .3s
+          .pills
+            display: flex
+            gap: 5px
+            margin-top: 10px
+            .pill
+              background-color: $lightgrey
+              border: 1px solid $darkgrey
+              color: $darkgrey
+              padding: 0px 10px
+              border-radius: 8px
+              font-size: .7rem
+              font-weight: 600
+              display: flex
+              align-items: center
+              gap: 5px
+    .social-media-links
+      display: flex
+      align-items: start
+      padding-top: 10px
+      gap: 10px
+      a
+        color: $darkgrey
+        font-size: 1.5rem
+        transition: .3s
+        &:hover
+          color: $primary
+          transition: .3s
+
+
+

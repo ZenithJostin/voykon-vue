@@ -126,5 +126,5 @@ import CollapsedProductComponent from '../Components/CollapsedProductComponent.v
 </script>
 
 <style lang="sass">
-@import url("/src/css/menu.sass")
+  @import url("/src/css/menu.sass")
 </style>
