@@ -22,6 +22,11 @@ import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
 
+
+//Menu
+  //Layouts
+import MenuLayout from '../layouts/menu/Layouts/MenuLayout.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -124,6 +129,11 @@ const router = createRouter({
         //   component: MenuRestaurant,
         // }
       ]
+    },
+    {
+      path: '/menu',
+      name: 'Menu layout',
+      component: MenuLayout
     }
   ]
 })
