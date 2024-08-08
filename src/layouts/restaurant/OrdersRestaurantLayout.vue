@@ -4,7 +4,7 @@
       <div
         :class="`order-card ${extendOrderId === order.order_id ? 'extended-details' : ''}`"
       >
-        <div class="order-card-mid">
+        <div class="order-card-top">
           <div class="top-section-left">
             <h1 class="order-restaurant-name">{{ order.order_restaurant_name }}</h1>
             <span class="order-address">{{ order.order_address }}</span>

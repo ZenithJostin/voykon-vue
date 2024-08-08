@@ -93,5 +93,5 @@ const getStatusClass = (orderStatus) => {
 </script>
 
 <style>
-@import url('src/css/deliveries.sass');
+@import url('/src/css/deliveries.sass');
 </style>
