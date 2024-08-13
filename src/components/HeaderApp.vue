@@ -54,7 +54,7 @@ const changeStatus = async (user) => {
         // Actualizar el estado local después de la respuesta exitosa
         user.status = newStatus;
     } catch (error) {
-        console.error('Error updating user status:', error);
+        console.error('Error al actualizar, intente de nuevo mas tarde');
     }
 };
 
@@ -74,7 +74,7 @@ const fetchUserData = async () => {
 
         user.value = response.data.user;
     } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error al obtener los datos de usuario');
     }
 };
 
