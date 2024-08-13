@@ -30,7 +30,7 @@
                 required />
             </div>
             <div class="check-remember">
-              <div class="btn-check"><input id="inp-check" type="checkbox"><label for="inp-check">Recordarme</label></div>
+              <div class="btn-checker"><input id="inp-check" type="checkbox"><label for="inp-check">Recordarme</label></div>
               <a href="">¿Olvido su contraseña?</a>
             </div>
             <div class="btn-submit">

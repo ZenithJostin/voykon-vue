@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 
 // Delivery
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/ingreso',
       name: 'Login',
       component: LoginView
+    },
+    {
+      path: '/registro',
+      name: 'Register',
+      component: RegisterView
     },
     {
       path: '/repartidor',

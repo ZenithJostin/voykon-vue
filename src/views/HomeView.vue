@@ -6,7 +6,8 @@
       <RouterLink to="/menu">Menu</RouterLink> <br>
       <RouterLink to="/repartidor">Repartidor</RouterLink> <br>
       <RouterLink to="/administrador">Administrador</RouterLink><br>
-      <RouterLink to="/restaurante">Restaurante</RouterLink>
+      <RouterLink to="/restaurante">Restaurante</RouterLink><br>
+      <RouterLink to="/registro">Registro de usuarios</RouterLink>
       </div>
       
     </div>
