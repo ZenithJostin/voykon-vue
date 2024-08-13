@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 
 // Delivery
@@ -41,6 +42,11 @@ const router = createRouter({
       component: LoginView
     },
     {
+      path: '/registro',
+      name: 'Register',
+      component: RegisterView
+    },
+    {
       path: '/repartidor',
       name: 'DeliveryView',
       component: DeliveryView,
@@ -68,15 +74,11 @@ const router = createRouter({
       component: DeliveryView,
     },
     {
-      path: "/administrador",
-      name: "administrador",
+      path: '/:userId/administrador',
+      name: 'administrador',
       component: AdminView,
+      redirect: { name: 'RoutingLayout' },
       children: [
-        {
-          path: "",
-          name: "FirstViewAdmin",
-          redirect: "/administrador/enrutamiento",
-        },
         {
           path: "enrutamiento",
           name: "RoutingLayout",
