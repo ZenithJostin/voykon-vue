@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
     "leaflet": "^1.9.4",
     "material-symbols": "^0.21.0",
