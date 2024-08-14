@@ -65,7 +65,7 @@ const login = async () => {
 
   try {
     // Enviar solicitud de inicio de sesión
-    const response = await axios.post(`${apiBaseUrl}/api/user/login`, {
+    const response = await axios.post(`${apiBaseUrl}/api/deliveryman/login`, {
       email: email.value,
       password: password.value
     });
@@ -76,7 +76,7 @@ const login = async () => {
       localStorage.setItem('authToken', response.data.token);
 
       // Obtener la información del usuario usando el token
-      const userResponse = await axios.get(`${apiBaseUrl}/api/user`, {
+      const userResponse = await axios.get(`${apiBaseUrl}/api/deliveryman`, {
         headers: { Authorization: `Bearer ${response.data.token}` }
       });
 
@@ -85,7 +85,7 @@ const login = async () => {
         const userId = userResponse.data.id;
 
         // Redirigir al usuario a la ruta con su ID
-        router.push(`/${userId}/administrador/`);
+        router.push(`/${userId}/repartidor/`);
       } else {
         throw new Error('No se pudo obtener la información del usuario.');
       }

@@ -7,7 +7,11 @@
       <RouterLink to="/repartidor">Repartidor</RouterLink> <br>
       <RouterLink to="/administrador">Administrador</RouterLink><br>
       <RouterLink to="/restaurante">Restaurante</RouterLink><br>
-      <RouterLink to="/registro">Registro de usuarios</RouterLink>
+      <RouterLink to="/repartidor/registro">Registro de repartidor</RouterLink><br>
+      <RouterLink to="/administrador/registro">Registro de usuarios</RouterLink><br>
+      <RouterLink to="/repartidor/ingreso">Ingreso de repartidor</RouterLink><br>
+      <RouterLink to="/administrador/ingreso">Ingreso de usuarios</RouterLink>
+      
       </div>
       
     </div>

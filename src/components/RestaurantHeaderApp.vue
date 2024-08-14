@@ -1,10 +1,10 @@
 <template>
     <div class="header">
         <div class="logo-header">
-            <RouterLink :to="`/${user.id}/administrador`">
+            <RouterLink :to="{ name : 'RestaurantView'}">
                 <img src="/src/assets/images/Logo-voykon-white.png" class="logo-dk" alt="Logo Voykon Horizontal">
             </RouterLink>
-            <RouterLink :to="`/${user.id}/administrador`">
+            <RouterLink :to="{ name : 'RestaurantView'}">
                 <img src="/src/assets/images/Logo-Voykon-Icon-White.png" class="logo-mb" alt="Logo Voykon Icon MB">
             </RouterLink>
         </div>
@@ -13,13 +13,13 @@
                 <div class="name-user">
                     <h2>{{ user.name }}</h2>
                     <div class="status-user" @click="changeStatus(user)">
-                        <p>{{ user.status === 1 ? 'Disponible' : 'Inactivo' }}</p>
-                        <div :class="checkStatus(user.status)"></div>
+                        <p>{{ user.status === '1' ? 'Disponible' : 'Inactivo' }}</p>
+                        <div :class="`color-status ${checkStatus(user.status)}`"></div>
                     </div>
                 </div>
                 <RouterLink to="perfil">
                     <div class="image-user">
-                        <img :src="`${apiBaseUrl}/storage/${user.pic}`" alt="user-profile">
+                        <img :src="user.pic ? `${apiBaseUrl}/storage/${user.pic}` : '/src/assets/images/image-profile-placeholder.jpg'">
                     </div>
                 </RouterLink>
             </div>
@@ -42,11 +42,11 @@ const user = ref('');
 const route = useRoute();
 
 const checkStatus = (status) => {
-    return status === 1 ? 'color-status active' : 'color-status inactive';
+    return status === '1' ? 'active' : 'inactive';
 };
 
 const changeStatus = async (user) => {
-    const newStatus = user.status === 1 ? 2 : 1;
+    const newStatus = user.status === '1' ? '2' : '1';
     try {
         await axios.put(`${apiBaseUrl}/api/user/update/${user.id}`, { status: newStatus }, {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
