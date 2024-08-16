@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import 'material-symbols';
 import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import RegisterView from '../views/RegisterView.vue'
-
+import LoginDeliveryView from '../views/LoginDeliveryView.vue'
+import RegisterDeliveryView from '../views/RegisterDeliveryView.vue'
+import LoginAdminView from '../views/LoginAdminView.vue'
+import RegisterAdminView from '../views/RegisterAdminView.vue'
 
 // Delivery
 import DeliveryView from '../views/DeliveryView.vue'
@@ -23,7 +24,6 @@ import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
 
-
 //Menu
   //Layouts
 import MenuLayout from '../layouts/menu/Layouts/MenuLayout.vue'
@@ -37,25 +37,33 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/ingreso',
-      name: 'Login',
-      component: LoginView
+      path: '/repartidor/ingreso',
+      name: 'LoginDelivery',
+      component: LoginDeliveryView
+    },
+    
+    {
+      path: '/repartidor/registro',
+      name: 'RegisterDelivery',
+      component: RegisterDeliveryView
     },
     {
-      path: '/registro',
-      name: 'Register',
-      component: RegisterView
+      path: '/administrador/ingreso',
+      name: 'LoginAdmin',
+      component: LoginAdminView
+    },
+    
+    {
+      path: '/administrador/registro',
+      name: 'RegisterAdmin',
+      component: RegisterAdminView
     },
     {
-      path: '/repartidor',
+      path: '/:userId/repartidor',
       name: 'DeliveryView',
       component: DeliveryView,
+      redirect: { name: 'OrdersDelivery' },
       children: [
-        {
-          path: "",
-          name: "FirstViewDelivery",
-          redirect: "/repartidor/pedidos",
-        },
         {
           path: "perfil",
           name: "ProfileView",
@@ -75,7 +83,7 @@ const router = createRouter({
     },
     {
       path: '/:userId/administrador',
-      name: 'administrador',
+      name: 'AdminView',
       component: AdminView,
       redirect: { name: 'RoutingLayout' },
       children: [
@@ -107,15 +115,12 @@ const router = createRouter({
       ]
     },
     {
-      path: "/restaurante",
-      name: "restaurante",
+      path: "/:userId/restaurante",
+      name: "RestaurantView",
       component: RestaurantView,
+      redirect: { name: 'OrdersRestaurant' },
       children: [
         {
-          path: "",
-          name: "FirstViewRestaurant",
-          redirect: "/restaurante/pedidos",
-        },{
           path: "pedidos",
           name: "OrdersRestaurant",
           component: RestaurantOrders,

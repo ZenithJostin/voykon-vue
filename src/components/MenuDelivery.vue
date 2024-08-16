@@ -20,7 +20,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="/">
+        <router-link class="link-icon" to="/" @click="logout">
           <div class="menu-item">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">logout</span>
@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { defineProps } from 'vue'
 
 const props = defineProps({
@@ -46,8 +46,13 @@ const props = defineProps({
 })
 
 const route = useRoute()
+const router = useRouter()
 
 const isActiveIcon = (iconType) => {
   return route.fullPath.includes(iconType)
+}
+const logout = () => {
+  localStorage.removeItem('authToken')
+  router.push({ name: 'LoginDelivery' })
 }
 </script>

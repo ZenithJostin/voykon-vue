@@ -14,7 +14,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import axios from 'axios';
-import HeaderApp from '../components/HeaderApp.vue';
+import HeaderApp from '../components/AdminHeaderApp.vue';
 import MenuAdmin from '../components/MenuAdmin.vue';
 
 const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL;
@@ -38,25 +38,34 @@ const checkAuthentication = async () => {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
-    // Verificar si la respuesta del servidor contiene el ID del usuario
+    // Verificar si la respuesta del servidor contiene el ID y el tipo de usuario
     if (!response.data || !response.data.id) {
       throw new Error('Token inválido');
     }
 
-    // Obtén el userId de la URL
-    const urlUserId = route.params.userId;
+    // Obtén el userId y el tipo de usuario de la respuesta
+    const userId = response.data.id;
+    const userType = response.data.type;
 
     // Verifica si el userId de la URL coincide con el del usuario autenticado
-    if (response.data.id !== parseInt(urlUserId, 10)) {
+    const urlUserId = route.params.userId;
+    if (userId !== parseInt(urlUserId, 10)) {
       // Si no coinciden, redirige al usuario a la vista principal
-      router.push('/');
+      router.push('/ingreso');
+    }
+
+    // Verifica si el tipo de usuario es 1
+    if (userType !== "1") {
+      // Redirige si no es tipo 1
+      router.push(`/administrador/ingreso`);
     }
 
   } catch (error) {
     // Redirigir al usuario a la vista principal en caso de error
-    router.push('/');
+    router.push('/administrador/ingreso');
   }
 };
+
 
 // Verificar la autenticación al montar el componente
 onMounted(() => {

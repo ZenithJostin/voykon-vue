@@ -55,7 +55,6 @@
                 <option value="" disabled selected>Seleccione Tipo</option>
                 <option value="1">Administrador</option>
                 <option value="2">Restaurante</option>
-                <option value="3">Repartidor</option>
               </select>
             </div>
             <div class="form-two-columns">
