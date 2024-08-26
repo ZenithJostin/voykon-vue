@@ -1,35 +1,48 @@
 <template>
-  <main>
-    <div class="home-test">
-      <div class="txt-main">
-        Esta fuera de la aplicación <br>
-      <RouterLink to="/menu">Menu</RouterLink> <br>
-      <RouterLink to="/repartidor/registro">Registro de repartidor</RouterLink><br>
-      <RouterLink to="/administrador/registro">Registro de usuarios</RouterLink><br>
-      <RouterLink to="/repartidor/ingreso">Ingreso de repartidor</RouterLink><br>
-      <RouterLink to="/administrador/ingreso">Ingreso de usuarios</RouterLink>
+  <header class="navbar-container">
+    <nav>
+      <div class="logo-container">
+        <img src="/src/assets/images/Logo-Voykon-Icon-White.png" alt="Imagen de marca Voykon" />
       </div>
+      <span>Conoce a nustros restaurantes aliados</span>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="restaurant-hero">
+      <video autoplay muted loop class="video-bg">
+        <source src="@/assets/homeVideo.mp4" type="video/mp4" />
+      </video>
     </div>
+    <section class="restaurants-section">
+      <template v-for="restaurant in restaurants" :key="restaurant.restaurant_id">
+        <div class="card-container">
+          <div class="card">
+            <div class="restaurant-card-img">
+              <img :src="restaurant.restaurant_img" alt="" />
+            </div>
+            <div class="restautant-card-info">
+              <h2>{{ restaurant.restaurant_name }}</h2>
+              <span>{{ restaurant.restaurant_available_items }} Items disponibles</span>
+            </div>
+            <div class="restaurant-card-details">
+              <span class="material-symbols-outlined"> arrow_forward_ios </span>
+            </div>
+          </div>
+        </div>
+      </template>
+    </section>
   </main>
+  <footer>
+    <span>Voykon | Todos los derechos reservados 2024 | desarrollado por <a href="https://zeniths.dev/">Zenith</a></span>
+  </footer>
 </template>
 
 <script setup>
-  import { RouterLink } from 'vue-router';
+import * as testRestaurant from '/src/composables/testRestaurants.js'
+
+const restaurants = testRestaurant.restaurants
 </script>
 
-<style lang="sass" scoped>
-@import "../css/variables.sass"
-
-.home-test
-  display: flex
-  align-items: center
-  justify-content: center
-  width: 100vw
-  height: 100vh
-  font-size: 1.5em
-  .txt-main
-    text-align: center
-    a
-      color: $primary
-
+<style scoped>
+@import url(/src/css/home.sass);
 </style>
