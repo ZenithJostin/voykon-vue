@@ -1,10 +1,8 @@
 <template>
   <header class="navbar-container">
     <nav>
-      <div class="logo-container">
         <img src="/src/assets/images/Logo-Voykon-Icon-White.png" alt="Imagen de marca Voykon" />
-      </div>
-      <span>Conoce a nustros restaurantes aliados</span>
+        <h1>Voykon</h1>
     </nav>
   </header>
   <main class="main-content">
@@ -12,6 +10,10 @@
       <video autoplay muted loop class="video-bg">
         <source src="@/assets/homeVideo.mp4" type="video/mp4" />
       </video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <span>Conoce a nuestros restaurantes aliados</span>
+      </div>
     </div>
     <section class="restaurants-section">
       <template v-for="restaurant in restaurants" :key="restaurant.restaurant_id">

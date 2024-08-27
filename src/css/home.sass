@@ -11,32 +11,46 @@
         display: flex
         align-items: center
         justify-content: center
-        gap: 10px
-        .logo-container
-            img
-                height: 80px
-                min-width: 80px
-        span
-            font-size: 35px
-            font-weight: 800
-            color: $dark
+        gap: 5px
+        img
+            height: 80px
+            min-width: 80px
+        h1
+            font-size: 40px
+            font-weight: 700
+            color: $white
             text-align: center
+            z-index: 1
 .main-content
     width: 100%
     min-width: 450px
     gap: 0
     padding: 0
     .restaurant-hero
-        height: 580px
+        height: 400px
         width: 100%
         box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.459)
-        overflow: hidden
+        display: flex
+        justify-content: center
+        align-items: center
         position: relative
         video
             height: 100%
             width: 100%
             object-fit: cover
             object-position: center
+            position: absolute
+        .overlay
+            position: absolute
+            height: 100%
+            width: 100%
+            background: rgba(0, 0, 0, 0.473)
+        .hero-content
+            font-size: 40px
+            font-weight: 800
+            color: $white
+            text-align: center
+            z-index: 1
     .restaurants-section
         height: 100%
         width: 100%
@@ -105,10 +119,11 @@ footer
     span
         font-size: 16px
         font-weight: 600
+        color: $white
         a
-            color: $dark
-        a:hover
             color: $white
+        a:hover
+            color: $dark
             text-decoration: underline
 @media screen and (max-width: 560px)
     .navbar-container
@@ -119,6 +134,12 @@ footer
     .main-content
         .restaurant-hero
             height: 370px
+            .hero-content
+                font-size: 30px
+                font-weight: 800
+                color: $white
+                text-align: center
+                z-index: 2
         .restaurants-section
             .card-container
                 .card
