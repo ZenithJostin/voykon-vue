@@ -23,6 +23,7 @@ import AdminStreetRegistrationLayout from '../layouts/admin/AdminStreetRegistrat
 import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
+import RestaurantMenu from '../layouts/restaurant/MenuRestaurantLayout.vue'
 
 //Menu
   //Layouts
@@ -130,11 +131,11 @@ const router = createRouter({
           name: "ProfileRestaurant",
           component: RestaurantProfile,
         },
-        // {
-        //   path: "menu",
-        //   name: "MenuRestaurant",
-        //   component: MenuRestaurant,
-        // }
+        {
+          path: "menu",
+          name: "RestaurantMenu",
+          component: RestaurantMenu,
+        }
       ]
     },
     {

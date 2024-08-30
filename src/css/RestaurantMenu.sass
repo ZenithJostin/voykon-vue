@@ -1,0 +1,245 @@
+@import "variables.sass"
+.menu-edit-container
+    width: 100%
+    padding: 1.5em
+    .menu-container
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        flex-wrap: wrap
+        border-radius: 25px
+        padding-bottom: 2em
+        box-shadow: 0px 0px 10px #00000049
+        .menu-header
+            background-color: $lightgrey
+            width: 100%
+            height: 250px
+            padding: 2em
+            display: flex
+            justify-content: flex-end
+            .head-buttons
+                height: 100%
+                display: flex
+                flex-direction: column
+                align-items: flex-end
+                justify-content: space-between
+                .btn-head
+                    width: fit-content
+                    height: fit-content
+                    background-color: #000000d3
+                    border-radius: 10px
+                    padding: 0.2em 1em
+                    color: #fff
+                    display: flex
+                    font-weight: 600
+                    font-style: italic
+                    span
+                        margin-right: 0.2em
+        .info-restaurant
+            display: flex
+            padding: 0em 2em
+            width: 100%
+            margin-bottom: 2em
+            margin-top: -85px
+            justify-content: space-between
+            align-items: flex-end
+            .desc-restaurant
+                display: flex
+                align-items: flex-end
+                .logo-restaurant
+                    background-color: $midgrey
+                    box-shadow: 0px 0px 10px #00000049
+                    border: 4px solid #fff
+                    width: 150px
+                    height: 150px
+                    border-radius: 20px
+                .restaurant-name
+                    font-size: 1.7em
+                    font-weight: bold
+                    font-style: italic
+                    margin-left: 1em
+            .info-social
+                display: flex
+                flex-direction: row
+                align-items: center
+                .social-icon
+                    margin: 0px 5px
+                    height: fit-content
+                    span
+                        font-size: 2em
+                        line-height: 50px
+        .menu-buttons
+            display: flex
+            justify-content: space-between
+            width: 100%
+            padding: 0em 2em
+            .btn-menu
+                display: flex
+                flex-direction: row
+                align-items: center
+                justify-content: space-between
+                background-color: #fff
+                box-shadow: 0px 0px 10px #0000002c
+                margin: 0.5rem 0
+                padding: 0.5rem
+                border-radius: 15px
+                border-left: 5px solid $primary
+                color: $dark
+                font-weight: 600
+                font-style: italic
+                cursor: pointer
+                transition: .4s
+                span
+                    margin-right: 0.2em
+                &:hover
+                    background-color: $primary
+                    color: $white
+            .btn-add-category
+                background-color: $primary
+                color: $white
+                &:hover
+                    background-color: $primarydark
+                    border-left-color: $primarydark
+        .menu-categories
+            width: 100%
+            padding: 0em 2em
+            margin: 2em 0em
+            .menu-category
+                margin-bottom: 1em
+                cursor: pointer
+                overflow: hidden
+                .header-category
+                    background-color: $mlightgrey
+                    padding: 0.6em 1em
+                    border-radius: 20px
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    cursor: pointer
+                    transition: .8s
+                    &.active
+                        border-radius: 20px 20px 0px 0px
+                        transition: 0s
+                    .btn-add-category, .btn-add-product, .btn-view-menu, .menu-hours, .edit-design, .emoji-category, .edit-category-buttons span, .edit-product-buttons span, .option-product-one, .option-product-two
+                        cursor: pointer
+                    .info-head-category
+                        display: flex
+                        align-items: center
+                        position: relative
+                        .emoji-category
+                            cursor: pointer
+                            margin: 0px 10px
+                            border-radius: 5px
+                            font-size: 2em
+                            display: inline-block
+                        .emoji-category.disabled
+                            cursor: not-allowed
+                            pointer-events: none
+                        .emoji-picker-container, .v3-emoji-picker
+                            position: absolute
+                            top: 0
+                            z-index: 1000
+                        .edit-category-buttons
+                            height: fit-content
+                        h3
+                            font-size: 1.4em
+                            font-weight: 600
+                            padding: 0.2em 0.5em
+                        .input-title-category
+                            border: 1px solid $grey
+                            display: flex
+                            align-items: center
+                            background-color: $white
+                            padding: 0.2em 0.5em
+                            font-size: 1.4em
+                            font-weight: 600
+                            border-radius: 20px
+                            input
+                                border: none
+                                font-weight: 600
+                                outline: none
+                                &:active, &:focus-visible, &:focus-within
+                                    border: none
+                                    outline: none
+                    .edit-category-buttons
+                        span
+                            margin: 0em 0.2em
+                            font-size: 1.8em
+                        .deleted
+                            color: $negative
+                .product-container
+                    transition: height 0.4s ease
+                    height: auto
+                    border: 2px $midgrey solid
+                    border-top: none
+                    border-radius: 0px 0px 20px 20px
+                    &.collapsed
+                        height: 0
+                    &.expanded
+                        height: auto
+                    .product-content
+                        padding: 1em
+                    .add-product
+                        border-top: 2px $midgrey solid
+                        padding: 1em
+                        .btn-add-product
+                            align-items: center
+                            justify-content: space-between
+                            background-color: $primary
+                            box-shadow: 0px 0px 10px #0000002c
+                            margin: 0.5rem 0
+                            padding: 0.5rem
+                            border-radius: 15px
+                            color: $white
+                            font-weight: 600
+                            font-style: italic
+                            cursor: pointer
+                            transition: .4s
+                            &:hover
+                                background-color: $primarydark
+            .modal-overlay 
+                position: fixed
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                background-color: rgba(0, 0, 0, 0.5)
+                display: flex
+                justify-content: center
+                align-items: center
+                z-index: 99999
+                .modal-content 
+                    width: 600px
+                    background-color: white
+                    padding: 20px
+                    border-radius: 8px
+                    text-align: center
+                    gap: 10px
+                    .modal-buttons
+                        button 
+                            margin: 0 10px
+                            align-items: center
+                            justify-content: space-between
+                            background-color: $primary
+                            border: none
+                            box-shadow: 0px 0px 10px #0000002c
+                            padding: 0.5em 1em
+                            border-radius: 15px
+                            color: $white
+                            font-weight: 600
+                            font-style: italic
+                            cursor: pointer
+                            transition: .4s
+                            &:hover
+                                background-color: $primarydark
+                        .btn-not
+                            background-color: $white
+                            color: $primary
+                            border-left: 5px solid $primary
+                            &:hover
+                                background-color: $primary
+                                color: $white
+            
+@media screen and (max-width:950px)
+
+@media screen and (max-width:500px)
