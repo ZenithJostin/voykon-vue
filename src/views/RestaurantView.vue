@@ -4,7 +4,7 @@
     <div class="content-menu">
       <div class="router-view">
         <RouterView />
-    </div>
+      </div>
       <MenuAdmin :isVisible="isMenuVisible" />
     </div>
   </main>
@@ -12,7 +12,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 import HeaderApp from '../components/RestaurantHeaderApp.vue';
@@ -22,7 +22,7 @@ const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL;
 
 const isMenuVisible = ref(false);
 const router = useRouter();
-const route = useRoute();
+const userId = ref(null); // Variable para almacenar el userId del token
 
 const checkAuthentication = async () => {
   const token = localStorage.getItem('authToken');
@@ -45,17 +45,12 @@ const checkAuthentication = async () => {
     }
 
     // Obtén el userId y el tipo de usuario de la respuesta
-    const userId = response.data.id;
+    userId.value = response.data.id;
     const userType = response.data.type;
 
-    // Verifica si el userId de la URL coincide con el del usuario autenticado
-    const urlUserId = route.params.userId;
-    if (userId !== parseInt(urlUserId, 10)) {
-      
-      router.push('/ingreso');
-    }
-
+    // Verifica si el tipo de usuario es 2
     if (userType !== "2") {
+      // Redirige si no es tipo 2
       router.push(`/administrador/ingreso`);
     }
 
@@ -64,7 +59,6 @@ const checkAuthentication = async () => {
     router.push('/administrador/ingreso');
   }
 };
-
 
 // Verificar la autenticación al montar el componente
 onMounted(() => {
@@ -75,4 +69,3 @@ const toggleMenuVisibility = () => {
   isMenuVisible.value = !isMenuVisible.value;
 };
 </script>
-

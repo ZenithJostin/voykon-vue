@@ -24,6 +24,7 @@ import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
 import RestaurantMenu from '../layouts/restaurant/MenuRestaurantLayout.vue'
+import ProductOptionsMenu from '../layouts/restaurant/ProductOptionsRestaurantLayout.vue'
 
 //Menu
   //Layouts
@@ -60,14 +61,14 @@ const router = createRouter({
       component: RegisterAdminView
     },
     {
-      path: '/:userId/repartidor',
+      path: '/repartidor',
       name: 'DeliveryView',
       component: DeliveryView,
       redirect: { name: 'OrdersDelivery' },
       children: [
         {
           path: "perfil",
-          name: "ProfileView",
+          name: "ProfileDelivery",
           component: ProfileView,
         },
         {
@@ -78,12 +79,7 @@ const router = createRouter({
       ],
     },
     {
-      path: '/repartidor/:ParamMenu',
-      name: 'DeliveryParam',
-      component: DeliveryView,
-    },
-    {
-      path: '/:userId/administrador',
+      path: '/administrador',
       name: 'AdminView',
       component: AdminView,
       redirect: { name: 'RoutingLayout' },
@@ -116,7 +112,7 @@ const router = createRouter({
       ]
     },
     {
-      path: "/:userId/restaurante",
+      path: "/restaurante",
       name: "RestaurantView",
       component: RestaurantView,
       redirect: { name: 'OrdersRestaurant' },
@@ -135,6 +131,11 @@ const router = createRouter({
           path: "menu",
           name: "RestaurantMenu",
           component: RestaurantMenu,
+        },
+        {
+          path: "menu/product/:productId",
+          name: "ProductOptionsMenu",
+          component: ProductOptionsMenu,
         }
       ]
     },
