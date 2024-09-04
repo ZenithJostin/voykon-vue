@@ -83,14 +83,14 @@ const login = async () => {
 
 
       if (userResponse.data) {
-        const userId = userResponse.data.id;
+        
         const userType = userResponse.data.type;
 
         if (userType === '1') {
-          router.push(`/${userId}/administrador/`);
+          router.push(`/administrador/`);
           console.log(userType)
         } else if (userType === '2') {
-          router.push(`/${userId}/restaurante/`);
+          router.push(`/restaurante/`);
           console.log(userType)
           console.log('restaurante')
         }

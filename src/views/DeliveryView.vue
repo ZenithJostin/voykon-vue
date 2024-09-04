@@ -4,7 +4,7 @@
     <div class="content-menu">
       <div class="router-view">
         <RouterView />
-    </div>
+      </div>
       <MenuDelivery :isVisible="isMenuVisible" />
     </div>
   </main>
@@ -12,7 +12,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 import HeaderApp from '../components/DeliveryHeaderApp.vue';
@@ -22,7 +22,6 @@ const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL;
 
 const isMenuVisible = ref(false);
 const router = useRouter();
-const route = useRoute();
 
 const checkAuthentication = async () => {
   const token = localStorage.getItem('authToken');
@@ -39,26 +38,16 @@ const checkAuthentication = async () => {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
-    // Verificar si la respuesta del servidor contiene el ID y el tipo de usuario
+    // Verificar si la respuesta del servidor contiene el ID del usuario
     if (!response.data || !response.data.id) {
       throw new Error('Token inválido');
     }
 
-    // Obtén el userId y el tipo de usuario de la respuesta
-    const userId = response.data.id;
-
-    // Verifica si el userId de la URL coincide con el del usuario autenticado
-    const urlUserId = route.params.userId;
-    if (userId !== parseInt(urlUserId, 10)) {
-      router.push('/repartidor/ingreso');
-    }
-    
   } catch (error) {
     // Redirigir al usuario a la vista principal en caso de error
     router.push('/repartidor/ingreso');
   }
 };
-
 
 // Verificar la autenticación al montar el componente
 onMounted(() => {
@@ -69,3 +58,7 @@ const toggleMenuVisibility = () => {
   isMenuVisible.value = !isMenuVisible.value;
 };
 </script>
+
+<style scoped>
+/* Tus estilos aquí */
+</style>

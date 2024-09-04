@@ -20,25 +20,26 @@
           <form @submit.prevent="login" class="form login">
             <div class="form-field">
               <label for="login-email"><span class="material-symbols-outlined"> person </span></label>
-              <input v-model="email" autocomplete="username" id="login-email" type="email" name="email" class="form-input"
-                placeholder="Correo Electrónico" required />
+              <input v-model="email" autocomplete="username" id="login-email" type="email" name="email"
+                class="form-input" placeholder="Correo Electrónico" required />
             </div>
 
             <div class="form-field">
               <label for="login-pass"><span class="material-symbols-outlined"> lock </span></label>
-              <input v-model="password" id="login-pass" type="password" name="password" class="form-input" placeholder="Contraseña"
-                required />
+              <input v-model="password" id="login-pass" type="password" name="password" class="form-input"
+                placeholder="Contraseña" required />
             </div>
             <div class="check-remember">
-              <div class="btn-checker"><input id="inp-check" type="checkbox"><label for="inp-check">Recordarme</label></div>
+              <div class="btn-checker"><input id="inp-check" type="checkbox"><label for="inp-check">Recordarme</label>
+              </div>
               <a href="">¿Olvidó su contraseña?</a>
             </div>
             <div class="btn-submit">
               <input type="submit" value="Ingresar" />
             </div>
-            
+
             <!-- Mostrar mensaje de éxito o error -->
-            <div class="messagge-form" :class="{'active' : errorMessage}">
+            <div class="messagge-form" :class="{ 'active': errorMessage }">
               <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
             </div>
           </form>
@@ -79,16 +80,7 @@ const login = async () => {
       const userResponse = await axios.get(`${apiBaseUrl}/api/deliveryman`, {
         headers: { Authorization: `Bearer ${response.data.token}` }
       });
-
-
-      if (userResponse.data) {
-        const userId = userResponse.data.id;
-
-        // Redirigir al usuario a la ruta con su ID
-        router.push(`/${userId}/repartidor/`);
-      } else {
-        throw new Error('No se pudo obtener la información del usuario.');
-      }
+      router.push(`/repartidor/`);
     } else {
       throw new Error('Token no recibido');
     }

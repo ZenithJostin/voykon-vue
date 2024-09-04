@@ -138,7 +138,7 @@
                     </div>
                     <div class="options-product">
                       <div class="option-product option-product-one">
-                        <h4>+ Opciones de Producto <span>0</span></h4>
+                        <router-link :to="`menu/product/${productIndex}`"><h4>+ Opciones de Producto <span>0</span></h4></router-link>
                         <p>Precios múltiples, extras, acompañamientos</p>
                       </div>
                       <div class="option-product option-product-two">
@@ -224,6 +224,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRoute, useRouter } from 'vue-router'
 import EmojiPicker from 'vue3-emoji-picker';
 import 'vue3-emoji-picker/css';
 
