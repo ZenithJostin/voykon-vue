@@ -2,7 +2,7 @@
   <div :class="['menu', { visible: isVisible }]">
     <nav>
       <div class="menu-items">
-        <router-link class="link-icon" to="pedidos">
+        <router-link class="link-icon" :to="{ name: 'OrdersDelivery' }">
           <div class="menu-item" :class="{ active: isActiveIcon('pedidos') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">quick_reorder</span>
@@ -11,7 +11,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="perfil">
+        <router-link class="link-icon" :to="{ name: 'ProfileDelivery' }">
           <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">person</span>

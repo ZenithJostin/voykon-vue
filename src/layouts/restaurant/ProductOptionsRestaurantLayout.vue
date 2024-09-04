@@ -5,6 +5,15 @@
         <h2>Producto</h2><br>
         <p>Edita o crea las opciones para tu producto a continuación</p>
       </div>
+      <div class="options-buttons">
+        <div class="btn-add-option btn-options" @click="addOption">
+          <p>+ Agregar Opción</p>
+        </div>
+        <div class="btn-view-menu btn-options">
+          <span class="material-symbols-outlined">visibility</span>
+          <router-link to="/restaurante/menu">Volver al Menú</router-link>
+        </div>
+      </div>
       <div class="menu-options">
         <template v-for="(option, index) in options" :key="index">
           <div class="menu-option">
@@ -108,15 +117,7 @@
           </div>
         </template>
       </div>
-      <div class="options-buttons">
-        <div class="btn-add-option btn-options" @click="addOption">
-          <p>+ Agregar Opción</p>
-        </div>
-        <div class="btn-view-menu btn-options">
-          <span class="material-symbols-outlined">visibility</span>
-          <router-link to="/restaurante/menu">Volver al Menú</router-link>
-        </div>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -194,7 +195,7 @@ const options = ref([
 ]);
 
 const addOption = () => {
-  options.value.push({
+  options.value.unshift({
     title: 'Nueva Opción',
     price: '',
     description: '',

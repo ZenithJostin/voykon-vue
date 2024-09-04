@@ -68,7 +68,7 @@ const router = createRouter({
       children: [
         {
           path: "perfil",
-          name: "ProfileView",
+          name: "ProfileDelivery",
           component: ProfileView,
         },
         {
@@ -77,11 +77,6 @@ const router = createRouter({
           component: OrdersDelivery,
         },
       ],
-    },
-    {
-      path: '/repartidor/:ParamMenu',
-      name: 'DeliveryParam',
-      component: DeliveryView,
     },
     {
       path: '/administrador',

@@ -40,7 +40,7 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
-        <router-link class="link-icon" to="/">
+        <router-link class="link-icon" :to="{ name: 'ProfileViewAdmin' }">
           <div class="menu-item">
             <div class="menu-item-nav">
               <span class="material-symbols-outlined">settings</span>
