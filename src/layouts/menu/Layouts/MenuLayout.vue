@@ -175,14 +175,17 @@
         </div>
       </div>
     </div>
+    <RouterView/>
+    <ShoppingCart/>
   </div>
 </template>
 <script setup>
 import RestaurantHeader from '../Components/RestaurantHeader.vue';
 import CategoryComponent from '../Components/CategoryComponent.vue';
 import CollapsedProductComponent from '../Components/CollapsedProductComponent.vue';
-
+import ShoppingCart from '../Components/ShoppingCart.vue';
 import { ref } from 'vue';
+import { RouterView } from 'vue-router';
 
 const isSearchVisible = ref(false);
 
