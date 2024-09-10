@@ -29,7 +29,7 @@ import ProductOptionsMenu from '../layouts/restaurant/ProductOptionsRestaurantLa
 //Menu
   //Layouts
 import MenuLayout from '../layouts/menu/Layouts/MenuLayout.vue'
-
+import ViewOrdersLayout from '../layouts/menu/Layouts/ViewOrdersLayout.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -142,7 +142,12 @@ const router = createRouter({
     {
       path: '/menu',
       name: 'Menu layout',
-      component: MenuLayout
+      component: MenuLayout,
+    },
+    {
+      path: '/menu/pedidos',
+      name: 'ViewOrdersLayout',
+      component: ViewOrdersLayout,
     }
   ]
 })

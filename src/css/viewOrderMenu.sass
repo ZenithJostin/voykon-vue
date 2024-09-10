@@ -1,0 +1,273 @@
+@import "variables.sass"
+.view-order-container
+    height: 100vh
+    width: 100%
+    .view-order-header
+        width: 100%
+        background-color: $dark
+        display: flex
+        align-items: center
+        justify-content: center
+        .nav-container
+            width: 80%
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: 1rem 0
+            .go-back-menu
+                display: flex
+                align-items: center
+                gap: 5px
+                color: $white
+                span
+                    font-size: 2rem
+                    cursor: pointer
+                    font-style: none
+                    color: $white
+                p
+                    font-size: 1.2rem
+                    font-weight: 600
+            .order-info-menu
+                p
+                    font-size: 1rem
+                    font-weight: 500
+                    color: $grey
+                span
+                    font-size: 1.2rem
+                    font-weight: 600
+                    color: $white
+    .view-order-section
+        height: 90vh
+        width: 100%
+        display: flex
+        justify-content: center
+        .order-container::-webkit-scrollbar
+            display: none
+        .order-container
+            height: 100%
+            width: 80%
+            background-color: $white
+            overflow-y: scroll
+            .order-item
+                height: 180px
+                width: 100%
+                border-bottom: 2px solid $titlegrey
+                display: flex
+                align-items: center
+                justify-content: space-between
+                .order-item-information
+                    display: flex
+                    align-items: center
+                    gap: 10px
+                    .order-image
+                        height: 100px
+                        width: 100px
+                        border: 1px solid $dark
+                        border-radius: 10px
+                        overflow: hidden
+                        img
+                            aspect-ratio: 1/1
+                    .order-tittle
+                        p
+                            font-size: .9rem
+                            font-weight: 500
+                        span
+                            font-size: 1.3rem
+                            font-weight: 600
+            .add-to-cart-container
+                width: 160px
+                display: flex
+                justify-content: space-around
+                align-items: center
+            .total-quantity
+                font-size: 1.2rem
+                font-weight: 600
+            .rest-quantity
+                font-weight: 700
+                color: red
+                cursor: pointer
+                display: flex
+                align-items: center
+            .sum-quantity
+                font-weight: 700
+                color: #53d911
+                cursor: pointer
+                display: flex
+                align-items: center
+    .order-service-container
+        width: 100%
+        padding: 1rem
+        background-color: $white
+        box-shadow: 0px 3px 3px 5px #8b8b8be0
+        position: fixed
+        bottom: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        gap: 15px
+        span
+            font-size: 1rem
+            font-weight: 600
+        .services-container
+            width: 100%
+            display: flex
+            justify-content: center
+            gap: 10px
+            .service-btn
+                cursor: pointer
+                border: none
+                background-color: $dark
+                border-radius: 7px
+                padding: 5px 20px
+                color: $white
+                font-size: 1.1rem
+                font-weight: 600
+.order-modal[open]
+    display: flex
+.order-modal
+    width: 400px
+    flex-direction: column
+    align-self: center
+    justify-self: center
+    border: none
+    border-radius: 10px
+    display: none
+    .order-modal-header
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-bottom: 2px solid $lightgrey
+        padding: 1rem
+        h2
+            font-size: 1.5rem
+            font-weight: 700
+            color: $titlegrey
+        span
+            font-size: 2rem
+            cursor: pointer
+    .order-modal-body::-webkit-scrollbar
+        display: none
+    .order-modal-body
+        flex-grow: 1
+        overflow-y: scroll
+        padding: 1rem
+        form
+            height: 100%
+            width: 100%
+            .customer-order-information
+                .input-field
+                    display: flex
+                    flex-direction: column
+                    label
+                        font-size: 1rem
+                        font-weight: 700
+                        color: $titlegrey
+                    input
+                        height: 35px
+                        border-radius: 50px
+                        border: 1px solid $grey
+                        background-color: $lightgrey
+                        padding: 0 10px
+                        font-size: .8rem
+                        font-weight: 500
+                        color: $dark
+                    input:focus
+                        outline: none
+                .input-field-number
+                    display: flex
+                    flex-wrap: wrap
+                    gap: 0 10px
+                    label
+                        width: 100%
+                        font-size: 1rem
+                        font-weight: 700
+                        color: $titlegrey
+                    .phone-country-id
+                        height: 35px
+                        display: flex
+                        align-items: center
+                        border-radius: 50px
+                        border: 1px solid $grey
+                        background-color: $lightgrey
+                        padding: 10px
+                        gap: 5px
+                    input
+                        height: 35px
+                        flex-grow: 1
+                        border-radius: 50px
+                        border: 1px solid $grey
+                        background-color: $lightgrey
+                        padding: 0 10px
+                        font-size: .8rem
+                        font-weight: 500
+                        color: $dark
+                    input:focus
+                        outline: none
+            .address-order-information
+                flex-grow: 1
+                h3
+                    width: 100%
+                    font-size: 1.5rem
+                    font-weight: 700
+                    color: $titlegrey
+                    border-bottom: 2px solid $midgrey
+                    margin: 20px 0 10px 0
+                .input-field
+                    display: flex
+                    justify-content: space-around
+                    flex-direction: column
+                    padding: 5px 0
+                    label
+                        font-size: 1rem
+                        font-weight: 700
+                        color: $titlegrey
+                    input
+                        height: 35px
+                        border-radius: 50px
+                        border: 1px solid $grey
+                        background-color: $lightgrey
+                        padding: 0 10px
+                        font-size: .8rem
+                        font-weight: 500
+                        color: $dark
+                    input:focus
+                        outline: none
+                    textarea
+                        height: 35px
+                        border-radius: 50px
+                        border: 1px solid $grey
+                        background-color: $lightgrey
+                        padding: 7px 10px
+                        font-size: .8rem
+                        font-weight: 500
+                        color: $dark
+                        resize: none
+                    textarea:focus
+                        outline: none
+    .order-modal-footer
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 5px
+        background-color: $dark
+        padding: 1rem
+        span
+            font-size: .9rem
+            font-weight: 700
+            color: $white
+        button
+            border: none
+            padding: 5px 10px
+            border-radius: 10px
+            background-color: $white
+            font-size: 1rem
+            font-weight: 700
+            color: $dark
+@media screen and (max-width: 600px)
+    .order-image
+        height: 80px !important
+        width: 80px !important
+    .services-container
+        flex-direction: column

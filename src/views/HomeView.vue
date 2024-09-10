@@ -3,7 +3,6 @@
     <nav>
         <img src="/src/assets/images/Logo-Voykon-Icon-White.png" alt="Imagen de marca Voykon" />
         <h1>Voykon</h1>
-        <ShoppingCart/>
     </nav>
   </header>
   <main class="main-content">
@@ -42,7 +41,6 @@
 
 <script setup>
 import * as testRestaurant from '/src/composables/testRestaurants.js'
-import ShoppingCart from '@/components/ShoppingCart.vue';
 
 const restaurants = testRestaurant.restaurants
 </script>
