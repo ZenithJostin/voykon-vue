@@ -17,7 +17,7 @@
                         <div :class="`color-status ${checkStatus(user.status)}`"></div>
                     </div>
                 </div>
-                <RouterLink to="perfil">
+                <RouterLink :to="{ name: 'ProfileRestaurant' }">
                     <div class="image-user">
                         <img
                             :src="user.pic ? `${apiBaseUrl}/storage/${user.pic}` : '/src/assets/images/image-profile-placeholder.jpg'">
@@ -76,15 +76,7 @@ const fetchUserData = async () => {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        // Asignar el userId del token a la variable userId
-        userId.value = response.data.id;
-
-        // Usar el userId para obtener los detalles del usuario
-        const userResponse = await axios.get(`${apiBaseUrl}/api/user/${userId.value}`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        user.value = userResponse.data.user;
+        user.value = response.data;
     } catch (error) {
         console.error('Error al obtener los datos de usuario');
     }
