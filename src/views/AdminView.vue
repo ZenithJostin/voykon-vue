@@ -27,7 +27,7 @@ const checkAuthentication = async () => {
   const token = localStorage.getItem('authToken');
 
   if (!token) {
-    router.push('/');
+    router.push('/administrador/ingreso');
     return;
   }
 
@@ -60,3 +60,6 @@ const toggleMenuVisibility = () => {
 };
 </script>
 
+<style>
+@import url('/src/css/adminLayout.sass');
+</style>

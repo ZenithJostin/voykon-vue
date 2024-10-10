@@ -18,6 +18,10 @@ import AdminProfileLayout from '../layouts/admin/AdminProfileLayout.vue'
 import AdminDeliveriesLayout from '../layouts/admin/AdminDeliveriesLayout.vue'
 import AdminStreetLayout from '../layouts/admin/AdminStreetLayout.vue'
 import AdminStreetRegistrationLayout from '../layouts/admin/AdminStreetRegistrationLayout.vue'
+import restaurantIndex from '@/views/Admin/Restaurants/restaurant-index.vue';
+import restaurantManage from '@/views/Admin/Restaurants/restaurant-manage.vue';
+import deliverymenIndex from '@/views/Admin/Deliverymen/deliverymen-index.vue';
+import deliverymenManage from '@/views/Admin/Deliverymen/deliverymen-manage.vue';
 
 // Restaurant
 import RestaurantView from '../views/RestaurantView.vue'
@@ -108,6 +112,36 @@ const router = createRouter({
           path: "barrios/registro",
           name: "AdminStreetRegistration",
           component: AdminStreetRegistrationLayout,
+        },
+        {
+          path: "restaurants",
+          name: "restaurantIndex",
+          component: restaurantIndex,
+        },
+        {
+          path: "restaurants/manage",
+          name: "restaurantManage",
+          component: restaurantManage,
+        },
+        {
+          path: "restaurants/manage/:id",
+          name: "restaurantManageId",
+          component: restaurantManage,
+        },
+        {
+          path: "deliverymen",
+          name: "deliverymenIndex",
+          component: deliverymenIndex,
+        },
+        {
+          path: "deliverymen/manage",
+          name: "deliverymenManage",
+          component: deliverymenManage,
+        },
+        {
+          path: "deliverymen/manage/:id",
+          name: "deliverymenManageId",
+          component: deliverymenManage,
         },
       ]
     },
