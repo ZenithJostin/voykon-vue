@@ -20,6 +20,24 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
+        <router-link class="link-icon" :to="{ name: 'restaurantIndex' }">
+          <div class="menu-item" :class="{ active: isActiveIcon('restaurants') }">
+            <div class="menu-item-nav">
+              <span class="material-symbols-outlined"> shopping_bag </span>
+              <p>Restaurantes</p>
+            </div>
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
+        </router-link>
+        <router-link class="link-icon" :to="{ name: 'deliverymenIndex' }">
+          <div class="menu-item" :class="{ active: isActiveIcon('deliverymen') }">
+            <div class="menu-item-nav">
+              <span class="material-symbols-outlined"> shopping_bag </span>
+              <p>Domicialiarios</p>
+            </div>
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
+        </router-link>
 
         <router-link class="link-icon" :to="{ name: 'ProfileViewAdmin' }">
           <div class="menu-item" :class="{ active: isActiveIcon('perfil') }">
