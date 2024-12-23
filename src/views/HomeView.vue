@@ -1,8 +1,8 @@
 <template>
   <header class="navbar-container">
     <nav>
-        <img src="/src/assets/images/Logo-Voykon-Icon-White.png" alt="Imagen de marca Voykon" />
-        <h1>Voykon</h1>
+      <img src="/src/assets/images/Logo-Voykon-Icon-White.png" alt="Imagen de marca Voykon" />
+      <h1>Voykon</h1>
     </nav>
   </header>
   <main class="main-content">
@@ -15,34 +15,53 @@
         <span>Conoce a nuestros restaurantes aliados</span>
       </div>
     </div>
-    <section class="restaurants-section">
-      <template v-for="restaurant in restaurants" :key="restaurant.restaurant_id">
+    <section v-if="restaurants" class="restaurants-section">
+      <template v-for="restaurant in restaurants" :key="restaurant.id">
         <div class="card-container">
           <div class="card">
-            <div class="restaurant-card-img">
-              <img :src="restaurant.restaurant_img" alt="" />
-            </div>
+            <router-link class="restaurant-card-img" :to="'/menu/' + restaurant.id">
+              <img :src="`${apiBaseUrl}/storage/${restaurant.pic}`" alt="" />
+            </router-link>
             <div class="restautant-card-info">
-              <h2>{{ restaurant.restaurant_name }}</h2>
-              <span>{{ restaurant.restaurant_available_items }} Items disponibles</span>
+              <h2>{{ restaurant.name }}</h2>
+              <span>{{ restaurant.products.length }} Productos disponibles</span>
             </div>
-            <div class="restaurant-card-details">
+            <router-link class="restaurant-card-details" :to="'/menu/' + restaurant.id">
               <span class="material-symbols-outlined"> arrow_forward_ios </span>
-            </div>
+            </router-link>
           </div>
         </div>
       </template>
     </section>
+    <section v-else>
+      <div class="loading-container">
+        <span>Cargando...</span>
+      </div>
+    </section>
   </main>
   <footer>
-    <span>Voykon | Todos los derechos reservados 2024 | desarrollado por <a href="https://zeniths.dev/">Zenith</a></span>
+    <span
+      >Voykon | Todos los derechos reservados 2024 | desarrollado por
+      <a href="https://zeniths.dev/">Zenith</a></span
+    >
   </footer>
 </template>
 
 <script setup>
-import * as testRestaurant from '/src/composables/testRestaurants.js'
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
 
-const restaurants = testRestaurant.restaurants
+const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL
+
+const restaurants = ref([])
+
+const fetchRestaurants = async () => {
+  const response = await axios.get(`${apiBaseUrl}/api/getRestaurantList`)
+  restaurants.value = response.data
+}
+onMounted(() => {
+  fetchRestaurants()
+})
 </script>
 
 <style scoped>

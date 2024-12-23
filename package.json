@@ -12,16 +12,26 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@popperjs/core": "^2.11.8",
     "axios": "^1.7.5",
     "bootstrap": "^5.3.3",
+    "datatables.net-bs5": "^2.1.8",
+    "datatables.net-dt": "^2.1.8",
+    "datatables.net-responsive-dt": "^3.0.3",
+    "datatables.net-select-dt": "^2.1.0",
+    "datatables.net-vue3": "^3.0.2",
     "leaflet": "^1.9.4",
     "material-symbols": "^0.21.0",
     "pinia": "^2.1.7",
+    "sweetalert2": "^11.14.1",
     "vue": "^3.4.29",
     "vue-flagpack": "^1.0.1",
     "vue-router": "^4.3.3",
-    "vue3-emoji-picker": "^1.1.8"
+    "vue-skeleton-loader": "^1.0.0",
+    "vue3-emoji-picker": "^1.1.8",
+    "vuetify": "^3.7.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
@@ -32,7 +42,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "jsdom": "^24.1.0",
     "prettier": "^3.2.5",
-    "sass": "^1.77.6",
+    "sass": "^1.79.4",
     "sass-loader": "^14.2.1",
     "vite": "^5.3.1",
     "vite-plugin-vue-devtools": "^7.3.1",

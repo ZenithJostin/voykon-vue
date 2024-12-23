@@ -8,14 +8,33 @@
               <span class="material-symbols-outlined">edit</span> Editar Diseño
             </label>
           </div>
-          <input type="file" id="fileInputHeader" name="fileInputHeader" ref="fileInputHeader"
-            @change="onMenuHeaderImageChange" style="display: none">
+          <input
+            type="file"
+            id="fileInputHeader"
+            name="fileInputHeader"
+            ref="fileInputHeader"
+            @change="onMenuHeaderImageChange"
+            style="display: none"
+          />
         </div>
       </div>
       <div class="info-restaurant">
         <div class="desc-restaurant">
           <div class="logo-restaurant">
-            <img src="/src/assets/images/KFC_Logo.jpg" alt="" />
+            <img :src="restaurantPic" alt="" />
+            <div class="edit-design btn-head">
+              <label for="fileRestaurantPic">
+                <span class="material-symbols-outlined">edit</span>
+              </label>
+            </div>
+            <input
+              type="file"
+              id="fileRestaurantPic"
+              name="fileRestaurantPic"
+              ref="fileRestaurantPic"
+              @change="onRestaurantPicChange"
+              style="display: none"
+            />
           </div>
           <div class="restaurant-name">KFC</div>
         </div>
@@ -43,20 +62,26 @@
         </div>
         <div class="btn-view-menu btn-menu">
           <span class="material-symbols-outlined">visibility</span>
-          <p>Ver Menú Online</p>
+          <a :href="'/menu/' + restaurantInfo?.id" target="_blank">Ver Menú Online</a>
         </div>
       </div>
       <div class="menu-categories">
         <template v-for="(category, categoryIndex) in categories" :key="category.id">
           <div class="menu-category">
             <form @submit.prevent="updateCategory(category)">
-              <div class="header-category" :class="{ active: category.isExpanded }"
-                @click="toggleCategory(categoryIndex)">
+              <div
+                class="header-category"
+                :class="{ active: category.isExpanded }"
+                @click="toggleCategory(categoryIndex)"
+              >
                 <div class="info-head-category">
-                  <span class="material-symbols-outlined">{{ category.isExpanded ? 'keyboard_arrow_up' :
-        'keyboard_arrow_down' }}</span>
-                  <div :class="{ 'emoji-category': true, 'disabled': !category.isExpanded }"
-                    @click.stop="category.isExpanded && toggleEmojiPicker(categoryIndex)">
+                  <span class="material-symbols-outlined">{{
+                    category.isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+                  }}</span>
+                  <div
+                    :class="{ 'emoji-category': true, disabled: !category.isExpanded }"
+                    @click.stop="category.isExpanded && toggleEmojiPicker(categoryIndex)"
+                  >
                     {{ category.selectedEmoji || '🍔' }}
                   </div>
                   <div v-if="category.showPicker" @click.stop="" class="emoji-picker-container">
@@ -71,34 +96,67 @@
                   </label>
                 </div>
                 <div class="edit-category-buttons">
-                  <label @click.stop="" v-if="category.isExpanded" :for="`btn-submit-categories-${category.id}`"><span
-                      v-if="category.isExpanded" class="material-symbols-outlined save">save</span></label>
-                  <button type=" submit" :id="`btn-submit-categories-${category.id}`"
-                    style="display: none;">submit</button>
-                  <span class="material-symbols-outlined copy"
-                    @click.stop="copyCategory(category)">content_copy</span>
-                  <span class="material-symbols-outlined deleted"
-                    @click.stop="openDeleteModal('category', categoryIndex)">delete_forever</span>
+                  <label
+                    @click.stop=""
+                    v-if="category.isExpanded"
+                    :for="`btn-submit-categories-${category.id}`"
+                    ><span v-if="category.isExpanded" class="material-symbols-outlined save"
+                      >save</span
+                    ></label
+                  >
+                  <button
+                    type=" submit"
+                    :id="`btn-submit-categories-${category.id}`"
+                    style="display: none"
+                  >
+                    submit
+                  </button>
+                  <span class="material-symbols-outlined copy" @click.stop="copyCategory(category)"
+                    >content_copy</span
+                  >
+                  <span
+                    class="material-symbols-outlined deleted"
+                    @click.stop="openDeleteModal('category', categoryIndex)"
+                    >delete_forever</span
+                  >
                 </div>
               </div>
             </form>
             <transition name="expand" @before-enter="beforeEnter" @enter="enter" @leave="leave">
               <div v-show="category.isExpanded" class="product-container" ref="container">
-                <template v-for="product, productIndex in filteredProductsByCategory(category.id)" :key="product.id">
+                <template
+                  v-for="(product, productIndex) in filteredProductsByCategory(category.id)"
+                  :key="product.id"
+                >
                   <form @submit.prevent="updateProduct(category, product)">
                     <div class="product-content">
                       <div class="main-info-product">
                         <div class="img-product">
                           <img
-                            :src="product.image ? `${apiBaseUrl}/storage/${product.image}` : '/src/assets/images/placeholder-image.jpg'"
-                            alt="Producto" />
-                          <input type="file" :id="`fileInput - ${categoryIndex} -${productIndex}`"
-                            @change="event => onImageChange(categoryIndex, productIndex, event)" style="display: none;">
+                            :src="
+                              product.image
+                                ? `${apiBaseUrl}/storage/${product.image}`
+                                : '/src/assets/images/placeholder-image.jpg'
+                            "
+                            alt="Producto"
+                          />
+                          <input
+                            type="file"
+                            :id="`fileInput - ${categoryIndex} -${productIndex}`"
+                            @change="(event) => onImageChange(categoryIndex, productIndex, event)"
+                            style="display: none"
+                          />
                           <div class="btn-img-product">
-                            <label :for="` fileInput - ${categoryIndex} -${productIndex} `" class="btn-edit-img">
+                            <label
+                              :for="` fileInput - ${categoryIndex} -${productIndex} `"
+                              class="btn-edit-img"
+                            >
                               <span class="material-symbols-outlined">edit_square</span>
                             </label>
-                            <div class="btn-delete-img" @click="resetImage(categoryIndex, productIndex)">
+                            <div
+                              class="btn-delete-img"
+                              @click="resetImage(categoryIndex, productIndex)"
+                            >
                               <span class="material-symbols-outlined">close</span>
                             </div>
                           </div>
@@ -112,13 +170,22 @@
                             <label for="price-product">Precio</label>
                             <div class="price-input">
                               <span class="currency-sign">$</span>
-                              <input id="price-product" type="text" v-model="product.price"
-                                @input="validateNumber('price-product')" placeholder="0.00" />
+                              <input
+                                id="price-product"
+                                type="text"
+                                v-model="product.price"
+                                @input="validateNumber('price-product')"
+                                placeholder="0.00"
+                              />
                             </div>
                           </div>
                           <div class="inp-first-col">
                             <label for="desc-product">Descripción</label>
-                            <textarea id="desc-product" type="text" v-model="product.description"></textarea>
+                            <textarea
+                              id="desc-product"
+                              type="text"
+                              v-model="product.description"
+                            ></textarea>
                           </div>
                           <div class="inp-first-col">
                             <div class="check-off" :class="{ active: product.discount > 0 }">
@@ -126,8 +193,13 @@
                                 <label for="off-product">Descuento</label>
                                 <div class="discount-input">
                                   <span class="currency-sign">$</span>
-                                  <input id="off-product" type="text" v-model="product.discount"
-                                    @input="validateNumber('off-product')" placeholder="0.00" />
+                                  <input
+                                    id="off-product"
+                                    type="text"
+                                    v-model="product.discount"
+                                    @input="validateNumber('off-product')"
+                                    placeholder="0.00"
+                                  />
                                 </div>
                                 <p>Precio con el descuento</p>
                               </div>
@@ -155,8 +227,10 @@
                         <div class="status-product">
                           <label for="status-product">Estado</label>
                           <div class="inp-dropdown">
-                            <div class="status-color" :class="product.state === 1 ? 'active' : 'inactive'">
-                            </div>
+                            <div
+                              class="status-color"
+                              :class="product.state === 1 ? 'active' : 'inactive'"
+                            ></div>
                             <select id="status-product" v-model="product.state">
                               <option :value="1">Disponible</option>
                               <option :value="2">Inactivo</option>
@@ -165,10 +239,11 @@
                         </div>
                         <div class="edit-product-buttons">
                           <button type="submit" class="material-symbols-outlined save">save</button>
-                          <span class="material-symbols-outlined"
-                            @click.stop="copyProduct(categoryIndex, productIndex)">content_copy</span>
-                          <span class="material-symbols-outlined deleted"
-                            @click.stop="openDeleteModal('product', categoryIndex, productIndex)">delete_forever</span>
+                          <span
+                            class="material-symbols-outlined deleted"
+                            @click.stop="openDeleteModal('product', categoryIndex, productIndex)"
+                            >delete_forever</span
+                          >
                         </div>
                       </div>
                     </div>
@@ -215,7 +290,7 @@
               </div>
               <div class="modal-buttons">
                 <button @click="saveSocialMedia">Guardar</button>
-                <button class="btn-not" @click="closeSocialModal">Cancelar</button>                
+                <button class="btn-not" @click="closeSocialModal">Cancelar</button>
               </div>
             </div>
           </div>
@@ -226,147 +301,162 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import EmojiPicker from 'vue3-emoji-picker';
-import 'vue3-emoji-picker/css';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
 
-const menuHeaderBackground = ref('');
-const fileInputHeader = ref(null);
+const menuHeaderBackground = ref('')
+const restaurantPic = ref('/src/assets/images/image-profile-placeholder.jpg')
+const restaurantInfo = ref()
+const fileInputHeader = ref(null)
+const fileRestaurantPic = ref(null)
 
-const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL;
+const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL
 
-const categories = ref([]);
-const products = ref([]);
+const categories = ref([])
+const products = ref([])
 
-const userId = ref(null);
-const socialMediaModal = ref(false);
+const userId = ref(null)
+const socialMediaModal = ref(false)
 const socialMedia = ref({
   instagram: '',
   facebook: '',
   whatsapp: '',
-  phone: '',
-});
+  phone: ''
+})
 
 onMounted(() => {
-  checkAuthentication();
-  fetchCategories();
-  fetchProducts();
-});
-
-
+  checkAuthentication()
+  fetchRestaurantInfo()
+  fetchCategories()
+  fetchProducts()
+})
 
 const beforeEnter = (el) => {
-  el.style.height = '0';
-};
+  el.style.height = '0'
+}
 
 const enter = (el, done) => {
-  el.style.height = `${el.scrollHeight}px`;
-  el.style.transition = 'height 0.4s ease';
+  el.style.height = `${el.scrollHeight}px`
+  el.style.transition = 'height 0.4s ease'
   setTimeout(() => {
-    el.style.height = 'fit-content';
-    done();
-  }, 400);
-};
+    el.style.height = 'fit-content'
+    done()
+  }, 400)
+}
 
 const leave = (el, done) => {
-  el.style.height = `${el.scrollHeight}px`;
-  el.style.transition = 'height 0.4s ease';
+  el.style.height = `${el.scrollHeight}px`
+  el.style.transition = 'height 0.4s ease'
   requestAnimationFrame(() => {
-    el.style.height = '0';
-  });
-  setTimeout(done, 400);
-};
-
+    el.style.height = '0'
+  })
+  setTimeout(done, 400)
+}
 
 const checkAuthentication = async () => {
-  const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem('authToken')
 
   try {
     const response = await axios.get(`${apiBaseUrl}/api/user`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
+      headers: { Authorization: `Bearer ${token}` }
+    })
 
     if (!response.data || !response.data.id) {
-      throw new Error('Token inválido');
+      throw new Error('Token inválido')
     }
-    userId.value = response.data.id;
-
+    userId.value = response.data.id
   } catch (error) {
+    console.error('Error al verificar la autenticación:', error)
+    // window.location.href = '/login';
   }
-};
+}
 
 const fetchCategories = async () => {
   try {
     const response = await axios.get(`${apiBaseUrl}/api/categories`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
-    });
-    categories.value = response.data;
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+    })
+    categories.value = response.data
   } catch (error) {
-    console.error('Error al obtener categorías:', error);
+    console.error('Error al obtener categorías:', error)
   }
-};
+}
 
 const fetchProducts = async () => {
   try {
     const response = await axios.get(`${apiBaseUrl}/api/products`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
-    });
-    products.value = response.data;
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+    })
+    products.value = response.data
   } catch (error) {
-    console.error('Error al obtener categorías:', error);
+    console.error('Error al obtener categorías:', error)
   }
-};
+}
+const fetchRestaurantInfo = async () => {
+  // Obtener información del restaurante
+  try {
+    const response = await axios.get(`${apiBaseUrl}/api/user`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+    })
+    restaurantInfo.value = response.data
+    menuHeaderBackground.value = response.data.bg_pic
+      ? `url(${apiBaseUrl}/storage/${response.data.bg_pic})`
+      : '/src/assets/images/placeholder-image.jpg'
+    restaurantPic.value = response.data.pic
+      ? `${apiBaseUrl}/storage/${response.data.pic}`
+      : '/src/assets/images/image-profile-placeholder.jpg'
+  } catch (error) {
+    console.error('Error al obtener la información del restaurante:', error)
+  }
+}
 
 const filteredProductsByCategory = (categoryId) => {
-  return products.value.filter(product => product.category_id === categoryId);
-};
-
+  return products.value.filter((product) => product.category_id === categoryId)
+}
 
 const addCategory = async () => {
   try {
     const response = await axios.post(`${apiBaseUrl}/api/category/store`, {
       name: 'Nueva Categoría',
-      user_id: userId.value,
-    });
+      user_id: userId.value
+    })
     const newCategory = {
       id: response.data.id,
       name: response.data.name,
       isExpanded: false,
-      selectedEmoji: '🍔',
-    };
+      selectedEmoji: '🍔'
+    }
 
-    categories.value.push(newCategory);
-    fetchCategories();
+    categories.value.push(newCategory)
+    fetchCategories()
   } catch (error) {
-    console.error('Error al agregar categoría:', error);
+    console.error('Error al agregar categoría:', error)
   }
-};
+}
 
 const copyCategory = async (category) => {
   try {
     const copiedCategoryData = {
-      name: `${category.name} (Copia)`, 
-      user_id: userId.value, 
-    };
-    const response = await axios.post(`${apiBaseUrl}/api/category/store`, copiedCategoryData);
+      name: `${category.name} (Copia)`,
+      user_id: userId.value
+    }
+    const response = await axios.post(`${apiBaseUrl}/api/category/store`, copiedCategoryData)
     const newCategory = {
-      id: response.data.id, 
-      name: response.data.name, 
-      isExpanded: false, 
-      selectedEmoji: category.selectedEmoji || '🍔', 
-    };
-    categories.value.push(newCategory);
-    fetchCategories();
+      id: response.data.id,
+      name: response.data.name,
+      isExpanded: false,
+      selectedEmoji: category.selectedEmoji || '🍔'
+    }
+    categories.value.push(newCategory)
+    fetchCategories()
   } catch (error) {
-    console.error('Error al copiar la categoría:', error);
+    console.error('Error al copiar la categoría:', error)
   }
-};
-
-
+}
 
 const addProduct = async (categoryId) => {
-
   try {
     const response = await axios.post(`${apiBaseUrl}/api/product/store`, {
       name: 'Nuevo Producto',
@@ -377,8 +467,8 @@ const addProduct = async (categoryId) => {
       image: '',
       category_id: categoryId,
       user_id: userId.value,
-      order: 0,
-    });
+      order: 0
+    })
     const newProduct = {
       id: response.data.id,
       name: response.data.name,
@@ -387,129 +477,170 @@ const addProduct = async (categoryId) => {
       discount: response.data.discount,
       state: response.data.state,
       image: response.data.image,
-      order: response.data.order,
-    };
+      order: response.data.order
+    }
 
-
-    products.value.push(newProduct);
-    fetchProducts();
+    products.value.push(newProduct)
+    fetchProducts()
   } catch (error) {
-    console.error('Error al agregar producto:', error);
+    console.error('Error al agregar producto:', error)
   }
-};
+}
 
 const updateCategory = async (category) => {
   try {
     await axios.put(`${apiBaseUrl}/api/category/update/${category.id}`, {
       name: category.name,
-      user_id: category.user_id,
-    });
-    fetchCategories();
+      user_id: category.user_id
+    })
+    fetchCategories()
   } catch (error) {
-    console.error('Error al actualizar categoría:', error);
+    console.error('Error al actualizar categoría:', error)
   }
-};
+}
 
 const deleteCategory = async (categoryIndex) => {
-  const category = categories.value[categoryIndex];
+  const category = categories.value[categoryIndex]
   try {
-    await axios.delete(`${apiBaseUrl}/api/category/delete/${category.id}`);
-    categories.value.splice(categoryIndex, 1);
-    fetchCategories();
+    await axios.delete(`${apiBaseUrl}/api/category/delete/${category.id}`)
+    categories.value.splice(categoryIndex, 1)
+    fetchCategories()
   } catch (error) {
-    console.error('Error al eliminar categoría:', error);
+    console.error('Error al eliminar categoría:', error)
   }
-};
-
-
-
+}
 
 const updateProduct = async (category, product) => {
   try {
-    await axios.post(`${apiBaseUrl}/api/product/update/${product.id}`, {
-      name: product.name,
-      price: product.price,
-      description: product.description,
-      discount: product.hasDiscount ? product.discount : null,
-      state: product.state,
-    });
+    const formData = new FormData()
+    formData.append('name', product.name)
+    formData.append('price', product.price)
+    formData.append('description', product.description)
+    formData.append('discount', product.hasDiscount ? product.discount : null)
+    formData.append('state', product.state)
+    
+    await axios.post(`${apiBaseUrl}/api/product/update/${product.id}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
   } catch (error) {
-    console.error('Error al actualizar producto:', error);
+    console.error('Error al actualizar producto:', error)
   }
-};
+}
 
 const deleteProduct = async (categoryIndex, productIndex) => {
-  const product = categories.value[categoryIndex].products[productIndex];
+  const product = categories.value[categoryIndex].products[productIndex]
   try {
-    await axios.post(`${apiBaseUrl}/api/product/delete/${product.id}`);
-    categories.value[categoryIndex].products.splice(productIndex, 1);
+    await axios.post(`${apiBaseUrl}/api/product/delete/${product.id}`)
+    categories.value[categoryIndex].products.splice(productIndex, 1)
   } catch (error) {
-    console.error('Error al eliminar producto:', error);
+    console.error('Error al eliminar producto:', error)
   }
-};
+}
 
 const onSelectEmoji = (categoryIndex, emoji) => {
-  categories.value[categoryIndex].selectedEmoji = emoji.native;
-};
+  categories.value[categoryIndex].selectedEmoji = emoji.native
+}
 
 const toggleCategory = (categoryIndex) => {
-  categories.value[categoryIndex].isExpanded = !categories.value[categoryIndex].isExpanded;
-};
+  categories.value[categoryIndex].isExpanded = !categories.value[categoryIndex].isExpanded
+}
 
 const toggleEmojiPicker = (categoryIndex) => {
-  categories.value[categoryIndex].showPicker = !categories.value[categoryIndex].showPicker;
-};
+  categories.value[categoryIndex].showPicker = !categories.value[categoryIndex].showPicker
+}
 
-const onMenuHeaderImageChange = (event) => {
-  const file = event.target.files[0];
+const onMenuHeaderImageChange = async (event) => {
+  const file = event.target.files[0]
   if (file) {
-    const reader = new FileReader();
+    await changeImage(file)
+    const reader = new FileReader()
     reader.onload = () => {
-      menuHeaderBackground.value = `url(${reader.result})`;
-    };
-    reader.readAsDataURL(file);
+      menuHeaderBackground.value = `url(${reader.result})`
+    }
+    reader.readAsDataURL(file)
   }
-};
+}
+
+const changeImage = async (file) => {
+  // Enviar imagen al servidor
+  try {
+    const data = new FormData()
+    data.append('bg_pic', file)
+    const response = await axios.post(`${apiBaseUrl}/api/restaurant/changeImage`, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
+      'content-type': 'multipart/form-data'
+    })
+
+    console.log('Imagen cambiada:', response.data)
+  } catch (error) {
+    console.error('Error al cambiar la imagen:', error)
+  }
+}
+const onRestaurantPicChange = async (event) => {
+  const file = event.target.files[0]
+  if (file) {
+    await changeRestaurantPic(file)
+    const reader = new FileReader()
+    reader.onload = () => {
+      restaurantPic.value = reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+}
+
+const changeRestaurantPic = async (file) => {
+  // Enviar imagen al servidor
+  try {
+    const data = new FormData()
+    data.append('pic', file)
+    const response = await axios.post(`${apiBaseUrl}/api/restaurant/changeRestauranPic`, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
+      'content-type': 'multipart/form-data'
+    })
+
+    console.log('Imagen cambiada:', response.data)
+  } catch (error) {
+    console.error('Error al cambiar la imagen:', error)
+  }
+}
 
 const openSocialModal = () => {
-  socialMediaModal.value = true;
-};
+  socialMediaModal.value = true
+}
 
 const closeSocialModal = () => {
-  socialMediaModal.value = false;
-};
+  socialMediaModal.value = false
+}
 
 const saveSocialMedia = () => {
-  console.log('Social media saved:', socialMedia.value);
-  closeSocialModal();
-};
+  console.log('Social media saved:', socialMedia.value)
+  closeSocialModal()
+}
 
-const showDeleteModal = ref(false);
-const deleteType = ref(null);
-const deleteCategoryIndex = ref(null);
-const deleteProductIndex = ref(null);
+const showDeleteModal = ref(false)
+const deleteType = ref(null)
+const deleteCategoryIndex = ref(null)
+const deleteProductIndex = ref(null)
 
 const openDeleteModal = (type, categoryIndex, productIndex = null) => {
-  deleteType.value = type;
-  deleteCategoryIndex.value = categoryIndex;
-  deleteProductIndex.value = productIndex;
-  showDeleteModal.value = true;
-};
-
+  deleteType.value = type
+  deleteCategoryIndex.value = categoryIndex
+  deleteProductIndex.value = productIndex
+  showDeleteModal.value = true
+}
 
 const closeModal = () => {
-  showDeleteModal.value = false;
-};
-
+  showDeleteModal.value = false
+}
 
 const confirmDelete = () => {
   if (deleteType.value === 'category') {
-    deleteCategory(deleteCategoryIndex.value);
+    deleteCategory(deleteCategoryIndex.value)
   } else if (deleteType.value === 'product') {
-    deleteProduct(deleteCategoryIndex.value, deleteProductIndex.value);
+    deleteProduct(deleteCategoryIndex.value, deleteProductIndex.value)
   }
-  closeModal();
-};
+  closeModal()
+}
 </script>
 
 <style lang="sass" scoped>

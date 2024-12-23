@@ -4,30 +4,29 @@
       <template v-for="user in users" :key="user.user_id">
         <template v-if="user.user_logged === true">
           <form action="#">
-            <div class="form-top-container">
-              <div class="image-container info-field" disabled>
-                <img :src="user.user_image" alt="Imagen de perfil" />
-              </div>
-            </div>
             <div class="form-mid-container">
+              <div class="col-12">
+                <h4>
+                  <strong>Información de usuario</strong>
+                </h4>
+              </div>
               <div class="form-field restaurant-name">
                 <label for="user-name">Nombre:</label>
-                <input class="info-field" type="text" id="user-name" :value="user.user_name" :disabled="fieldActive" />
+                <input class="info-field" type="text" id="user-name" :value="user.user_name"/>
               </div>
               <div class="form-field restaurant-email">
-                <label for="user-email">Correo:</label>
-                <input class="info-field" type="email" id="user-email" :value="user.user_email"
-                  :disabled="fieldActive" />
+                <label for="user-email">NIT:</label>
+                <input class="info-field" type="number" id="user-email" :value="user.user_email"
+                  disabled/>
               </div>
               <div class="form-field restaurant-number">
                 <label for="user-number">Teléfono:</label>
-                <input class="info-field" type="number" id="user-number" :value="user.user_number"
-                  :disabled="fieldActive" />
+                <input class="info-field" type="number" id="user-number" :value="user.user_number" />
               </div>
               <div class="form-field restaurant-address">
-                <label for="user-name">Dirección:</label>
-                <input class="info-field" type="text" id="user-name" :value="user.user_address"
-                  :disabled="fieldActive" />
+                <label for="user-name">Correo:</label>
+                <input class="info-field" type="email" id="user-name" :value="user.user_address"
+                  disabled />
               </div>
               <div class="form-field">
                 <h4>Tipos de Servicio</h4>
