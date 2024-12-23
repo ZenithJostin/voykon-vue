@@ -16,6 +16,9 @@ header
       object-fit: cover
       object-position: top
       filter: blur(1px)
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
     .restaurant-status
       position: absolute
       top: 20px
@@ -49,9 +52,12 @@ header
         overflow: hidden
         width: 150px
         aspect-ratio: 1/1
+        background-color: #fff
         img
           object-fit: cover
           object-position: center
+          width: 100%
+          height: 100%
       .info
         display: flex
         flex-direction: column
@@ -101,11 +107,16 @@ header
           transition: .3s
 
 .menu-main-container
+  padding-bottom: 50px
   .categories-row
     display: flex
     justify-content: flex-start
     align-items: center
     gap: 20px
+    position: sticky
+    top: 0
+    background-color: #fff
+    z-index: 100
     .search-bx
       display: flex
       justify-content: start
@@ -169,13 +180,14 @@ header
         transition: .3s
   .product-row
     margin-bottom: 30px
+    padding-top: 30px
   .products-section
-    margin-top: 30px
     .product-title
       display: flex
       justify-content: flex-start
       align-items: center
       margin-bottom: 10px
+      padding-top: 10px
       color: $primary
       span
         font-size: 2.2rem

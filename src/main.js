@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import './css/app.sass'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createVuetify } from 'vuetify'

@@ -176,6 +176,11 @@ const router = createRouter({
     {
       path: '/menu',
       name: 'Menu layout',
+      component: HomeView,
+    },
+    {
+      path: '/menu/:id',
+      name: 'Menu layout with restaurant',
       component: MenuLayout,
     },
     {

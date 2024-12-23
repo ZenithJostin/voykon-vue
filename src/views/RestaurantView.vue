@@ -29,7 +29,7 @@ const checkAuthentication = async () => {
 
   if (!token) {
     // Redirige a la vista principal si no hay token
-    router.push('/');
+    router.push('/administrador/ingreso');
     return;
   }
 
