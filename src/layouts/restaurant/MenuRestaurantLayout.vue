@@ -8,14 +8,8 @@
               <span class="material-symbols-outlined">edit</span> Editar Diseño
             </label>
           </div>
-          <input
-            type="file"
-            id="fileInputHeader"
-            name="fileInputHeader"
-            ref="fileInputHeader"
-            @change="onMenuHeaderImageChange"
-            style="display: none"
-          />
+          <input type="file" id="fileInputHeader" name="fileInputHeader" ref="fileInputHeader"
+            @change="onMenuHeaderImageChange" style="display: none" />
         </div>
       </div>
       <div class="info-restaurant">
@@ -27,14 +21,8 @@
                 <span class="material-symbols-outlined">edit</span>
               </label>
             </div>
-            <input
-              type="file"
-              id="fileRestaurantPic"
-              name="fileRestaurantPic"
-              ref="fileRestaurantPic"
-              @change="onRestaurantPicChange"
-              style="display: none"
-            />
+            <input type="file" id="fileRestaurantPic" name="fileRestaurantPic" ref="fileRestaurantPic"
+              @change="onRestaurantPicChange" style="display: none" />
           </div>
           <div class="restaurant-name">KFC</div>
         </div>
@@ -69,20 +57,15 @@
         <template v-for="(category, categoryIndex) in categories" :key="category.id">
           <div class="menu-category">
             <form @submit.prevent="updateCategory(category)">
-              <div
-                class="header-category"
-                :class="{ active: category.isExpanded }"
-                @click="toggleCategory(categoryIndex)"
-              >
+              <div class="header-category" :class="{ active: category.isExpanded }"
+                @click="toggleCategory(categoryIndex)">
                 <div class="info-head-category">
                   <span class="material-symbols-outlined">{{
                     category.isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-                  }}</span>
-                  <div
-                    :class="{ 'emoji-category': true, disabled: !category.isExpanded }"
-                    @click.stop="category.isExpanded && toggleEmojiPicker(categoryIndex)"
-                  >
-                    {{ category.selectedEmoji || '🍔' }}
+                    }}</span>
+                  <div :class="{ 'emoji-category': true, disabled: !category.isExpanded }"
+                    @click.stop="category.isExpanded && toggleEmojiPicker(categoryIndex)">
+                    {{ category.emoji || '🍔' }}
                   </div>
                   <div v-if="category.showPicker" @click.stop="" class="emoji-picker-container">
                     <EmojiPicker @select="onSelectEmoji(categoryIndex, $event)" />
@@ -96,158 +79,23 @@
                   </label>
                 </div>
                 <div class="edit-category-buttons">
-                  <label
-                    @click.stop=""
-                    v-if="category.isExpanded"
-                    :for="`btn-submit-categories-${category.id}`"
-                    ><span v-if="category.isExpanded" class="material-symbols-outlined save"
-                      >save</span
-                    ></label
-                  >
-                  <button
-                    type=" submit"
-                    :id="`btn-submit-categories-${category.id}`"
-                    style="display: none"
-                  >
+                  <label @click.stop="" v-if="category.isExpanded" :for="`btn-submit-categories-${category.id}`"><span
+                      v-if="category.isExpanded" class="material-symbols-outlined save">save</span></label>
+                  <button type=" submit" :id="`btn-submit-categories-${category.id}`" style="display: none">
                     submit
                   </button>
-                  <span class="material-symbols-outlined copy" @click.stop="copyCategory(category)"
+                  <!-- <span class="material-symbols-outlined copy" @click.stop="copyCategory(category)"
                     >content_copy</span
-                  >
-                  <span
-                    class="material-symbols-outlined deleted"
-                    @click.stop="openDeleteModal('category', categoryIndex)"
-                    >delete_forever</span
-                  >
+                  > -->
+                  <span class="material-symbols-outlined deleted"
+                    @click.stop="openDeleteModal('category', categoryIndex)">delete_forever</span>
                 </div>
               </div>
             </form>
             <transition name="expand" @before-enter="beforeEnter" @enter="enter" @leave="leave">
               <div v-show="category.isExpanded" class="product-container" ref="container">
-                <template
-                  v-for="(product, productIndex) in filteredProductsByCategory(category.id)"
-                  :key="product.id"
-                >
-                  <form @submit.prevent="updateProduct(category, product)">
-                    <div class="product-content">
-                      <div class="main-info-product">
-                        <div class="img-product">
-                          <img
-                            :src="
-                              product.image
-                                ? `${apiBaseUrl}/storage/${product.image}`
-                                : '/src/assets/images/placeholder-image.jpg'
-                            "
-                            alt="Producto"
-                          />
-                          <input
-                            type="file"
-                            :id="`fileInput - ${categoryIndex} -${productIndex}`"
-                            @change="(event) => onImageChange(categoryIndex, productIndex, event)"
-                            style="display: none"
-                          />
-                          <div class="btn-img-product">
-                            <label
-                              :for="` fileInput - ${categoryIndex} -${productIndex} `"
-                              class="btn-edit-img"
-                            >
-                              <span class="material-symbols-outlined">edit_square</span>
-                            </label>
-                            <div
-                              class="btn-delete-img"
-                              @click="resetImage(categoryIndex, productIndex)"
-                            >
-                              <span class="material-symbols-outlined">close</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="inpt-info-product">
-                          <div class="inp-first-col">
-                            <label for="name-product">Nombre</label>
-                            <input id="name-product" type="text" v-model="product.name" />
-                          </div>
-                          <div class="inp-first-col">
-                            <label for="price-product">Precio</label>
-                            <div class="price-input">
-                              <span class="currency-sign">$</span>
-                              <input
-                                id="price-product"
-                                type="text"
-                                v-model="product.price"
-                                @input="validateNumber('price-product')"
-                                placeholder="0.00"
-                              />
-                            </div>
-                          </div>
-                          <div class="inp-first-col">
-                            <label for="desc-product">Descripción</label>
-                            <textarea
-                              id="desc-product"
-                              type="text"
-                              v-model="product.description"
-                            ></textarea>
-                          </div>
-                          <div class="inp-first-col">
-                            <div class="check-off" :class="{ active: product.discount > 0 }">
-                              <div v-if="{ active: product.discount > 0 }" class="text-off-inpt">
-                                <label for="off-product">Descuento</label>
-                                <div class="discount-input">
-                                  <span class="currency-sign">$</span>
-                                  <input
-                                    id="off-product"
-                                    type="text"
-                                    v-model="product.discount"
-                                    @input="validateNumber('off-product')"
-                                    placeholder="0.00"
-                                  />
-                                </div>
-                                <p>Precio con el descuento</p>
-                              </div>
-                              <div class="check-off-inp">
-                                <input id="inp-off" type="checkbox" v-model="product.hasDiscount" />
-                                <label for="inp-off">Agregar Descuento</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="options-product">
-                        <div class="option-product option-product-one">
-                          <router-link :to="`/menu/product/${productIndex}`">
-                            <h4>+ Opciones de Producto <span>0</span></h4>
-                          </router-link>
-                          <p>Precios múltiples, extras, acompañamientos</p>
-                        </div>
-                        <div class="option-product option-product-two">
-                          <h4>+ Etiquetas <span>0</span></h4>
-                          <p>Agrega etiquetas para identificar tu producto</p>
-                        </div>
-                      </div>
-                      <div class="product-end-options">
-                        <div class="status-product">
-                          <label for="status-product">Estado</label>
-                          <div class="inp-dropdown">
-                            <div
-                              class="status-color"
-                              :class="product.state === 1 ? 'active' : 'inactive'"
-                            ></div>
-                            <select id="status-product" v-model="product.state">
-                              <option :value="1">Disponible</option>
-                              <option :value="2">Inactivo</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="edit-product-buttons">
-                          <button type="submit" class="material-symbols-outlined save">save</button>
-                          <span
-                            class="material-symbols-outlined deleted"
-                            @click.stop="openDeleteModal('product', categoryIndex, productIndex)"
-                            >delete_forever</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </form>
+                <template v-for="product in category.products" :key="product.id">
+                  <ProductList :category="category" :product="product" @delete-product="handleProductDelete" />
                 </template>
                 <div class="add-product">
                   <a class="btn-add-product" @click="addProduct(category.id)">+ Agregar Producto</a>
@@ -305,6 +153,8 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
+import ProductList from '@/components/Admin/Restaurant/Menu/ProductList.vue'
+import Swal from 'sweetalert2'
 
 const menuHeaderBackground = ref('')
 const restaurantPic = ref('/src/assets/images/image-profile-placeholder.jpg')
@@ -330,7 +180,7 @@ onMounted(() => {
   checkAuthentication()
   fetchRestaurantInfo()
   fetchCategories()
-  fetchProducts()
+  // fetchProducts()
 })
 
 const beforeEnter = (el) => {
@@ -375,7 +225,7 @@ const checkAuthentication = async () => {
 
 const fetchCategories = async () => {
   try {
-    const response = await axios.get(`${apiBaseUrl}/api/categories`, {
+    const response = await axios.get(`${apiBaseUrl}/api/restaurant/categories`,  {
       headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
     })
     categories.value = response.data
@@ -384,16 +234,16 @@ const fetchCategories = async () => {
   }
 }
 
-const fetchProducts = async () => {
-  try {
-    const response = await axios.get(`${apiBaseUrl}/api/products`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
-    })
-    products.value = response.data
-  } catch (error) {
-    console.error('Error al obtener categorías:', error)
-  }
-}
+// const fetchProducts = async () => {
+//   try {
+//     const response = await axios.get(`${apiBaseUrl}/api/products`, {
+//       headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+//     })
+//     products.value = response.data
+//   } catch (error) {
+//     console.error('Error al obtener categorías:', error)
+//   }
+// }
 const fetchRestaurantInfo = async () => {
   // Obtener información del restaurante
   try {
@@ -412,9 +262,9 @@ const fetchRestaurantInfo = async () => {
   }
 }
 
-const filteredProductsByCategory = (categoryId) => {
-  return products.value.filter((product) => product.category_id === categoryId)
-}
+// const filteredProductsByCategory = (categoryId) => {
+//   return products.value.filter((product) => product.category_id === categoryId)
+// }
 
 const addCategory = async () => {
   try {
@@ -436,26 +286,6 @@ const addCategory = async () => {
   }
 }
 
-const copyCategory = async (category) => {
-  try {
-    const copiedCategoryData = {
-      name: `${category.name} (Copia)`,
-      user_id: userId.value
-    }
-    const response = await axios.post(`${apiBaseUrl}/api/category/store`, copiedCategoryData)
-    const newCategory = {
-      id: response.data.id,
-      name: response.data.name,
-      isExpanded: false,
-      selectedEmoji: category.selectedEmoji || '🍔'
-    }
-    categories.value.push(newCategory)
-    fetchCategories()
-  } catch (error) {
-    console.error('Error al copiar la categoría:', error)
-  }
-}
-
 const addProduct = async (categoryId) => {
   try {
     const response = await axios.post(`${apiBaseUrl}/api/product/store`, {
@@ -463,7 +293,7 @@ const addProduct = async (categoryId) => {
       description: 'Descripción',
       price: 0,
       discount: 0,
-      state: 1,
+      state: 2,
       image: '',
       category_id: categoryId,
       user_id: userId.value,
@@ -481,7 +311,7 @@ const addProduct = async (categoryId) => {
     }
 
     products.value.push(newProduct)
-    fetchProducts()
+    fetchCategories()
   } catch (error) {
     console.error('Error al agregar producto:', error)
   }
@@ -491,7 +321,8 @@ const updateCategory = async (category) => {
   try {
     await axios.put(`${apiBaseUrl}/api/category/update/${category.id}`, {
       name: category.name,
-      user_id: category.user_id
+      user_id: category.user_id,
+      emoji: category.emoji
     })
     fetchCategories()
   } catch (error) {
@@ -510,23 +341,6 @@ const deleteCategory = async (categoryIndex) => {
   }
 }
 
-const updateProduct = async (category, product) => {
-  try {
-    const formData = new FormData()
-    formData.append('name', product.name)
-    formData.append('price', product.price)
-    formData.append('description', product.description)
-    formData.append('discount', product.hasDiscount ? product.discount : null)
-    formData.append('state', product.state)
-    
-    await axios.post(`${apiBaseUrl}/api/product/update/${product.id}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    })
-  } catch (error) {
-    console.error('Error al actualizar producto:', error)
-  }
-}
-
 const deleteProduct = async (categoryIndex, productIndex) => {
   const product = categories.value[categoryIndex].products[productIndex]
   try {
@@ -538,7 +352,8 @@ const deleteProduct = async (categoryIndex, productIndex) => {
 }
 
 const onSelectEmoji = (categoryIndex, emoji) => {
-  categories.value[categoryIndex].selectedEmoji = emoji.native
+  categories.value[categoryIndex].emoji = emoji.i
+  categories.value[categoryIndex].showPicker = false
 }
 
 const toggleCategory = (categoryIndex) => {
@@ -641,6 +456,31 @@ const confirmDelete = () => {
   }
   closeModal()
 }
+
+const handleProductDelete = async (productId) => {
+  try {
+    // Llamada al backend para eliminar el producto
+    await axios.delete(`${apiBaseUrl}/api/product/delete/${productId}`)
+
+    // Actualizar la lista de productos localmente
+    products.value = products.value.filter((product) => product.id !== productId)
+
+    // Mostrar confirmación
+    Swal.fire({
+      text: 'Producto eliminado',
+      showConfirmButton: false,
+      position: 'bottom-end',
+      timer: 1000,
+      color: '#fff',
+      background: '#f44336',
+      width: '200px',
+      timerProgressBar: true,
+    })
+  } catch (error) {
+    console.error('Error al eliminar el producto:', error)
+  }
+}
+
 </script>
 
 <style lang="sass" scoped>

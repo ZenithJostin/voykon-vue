@@ -25,7 +25,7 @@
     "leaflet": "^1.9.4",
     "material-symbols": "^0.21.0",
     "pinia": "^2.1.7",
-    "sweetalert2": "^11.14.1",
+    "sweetalert2": "^11.15.9",
     "vue": "^3.4.29",
     "vue-flagpack": "^1.0.1",
     "vue-router": "^4.3.3",

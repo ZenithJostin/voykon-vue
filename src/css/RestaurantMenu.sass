@@ -18,7 +18,7 @@
             display: flex
             border-radius: 25px 25px 0px 0px
             background-size: cover
-            background-position: center 
+            background-position: center
             justify-content: flex-end
             .head-buttons
                 height: 100%
@@ -163,7 +163,7 @@
                             cursor: pointer
                             margin: 0px 10px
                             border-radius: 5px
-                            font-size: 2em
+                            font-size: 1.8em
                             display: inline-block
                         .emoji-category.disabled
                             cursor: not-allowed
@@ -175,7 +175,7 @@
                         .edit-category-buttons
                             height: fit-content
                         h3
-                            font-size: 1.4em
+                            font-size: 1.2em
                             font-weight: 600
                             padding: 0.2em 0.5em
                         .input-title-category
@@ -184,7 +184,7 @@
                             align-items: center
                             background-color: $white
                             padding: 0.2em 0.5em
-                            font-size: 1.4em
+                            font-size: 1.2em
                             font-weight: 600
                             border-radius: 20px
                             input
@@ -197,7 +197,7 @@
                     .edit-category-buttons
                         span
                             margin: 0em 0.2em
-                            font-size: 1.8em
+                            font-size: 1.5em
                         .deleted
                             color: $negative
                 .product-container
@@ -242,12 +242,16 @@
                                     .btn-edit-img, .btn-delete-img
                                         background-color: $positive
                                         margin: 0em 0.2em
-                                        padding: 0.2em 0.2em 0em 0.2em
+                                        width: 30px
+                                        height: 30px
+                                        display: flex
+                                        justify-content: center
+                                        align-items: center
                                         border-radius: 5px
                                         cursor: pointer
                                         span
                                             color: $white
-                                            font-size: 1.4em
+                                            font-size: 1.3em
                                             line-height: 1
                                     .btn-delete-img
                                         background-color: $negative
@@ -257,6 +261,8 @@
                                 width: 80%
                                 justify-content: space-between
                                 gap: 1em
+                                align-items: start
+                                align-content: flex-start
                                 .inp-first-col
                                     width: 47%
                                     label
@@ -266,11 +272,48 @@
                                         border-radius: 10px
                                         outline: none
                                         padding: 0.2em 1em
-                                        border: 2px solid $grey
+                                        border: 1px solid $grey
+                                        font-size: .8rem
                                     textarea
                                         min-height: 100px
                                         font-size: 0.7em
                                         padding: 0.5em
+                                    .price-input, .discount-input
+                                        display: flex
+                                        align-items: center
+                                    .currency-sign
+                                        margin-right: 4px
+                                        font-size: 16px
+                                    .check-off
+                                        display: flex
+                                        flex-direction: column
+                                        height: 100%
+                                        justify-content: flex-end
+                                        &.true
+                                            justify-content: space-between
+                                        .check-off-inp
+                                            display: flex
+                                            input
+                                                width: auto
+                                                margin-right: 1em
+                                        p
+                                            font-size: 0.7em
+                                .inp-w-col
+                                    width: 100%
+                                    label
+                                        font-size: 0.8em
+                                    input, textarea
+                                        width: 100%
+                                        border-radius: 10px
+                                        outline: none
+                                        padding: 0.2em 1em
+                                        border: 1px solid $grey
+                                        font-size: .8rem
+                                    textarea
+                                        min-height: 100px
+                                        font-size: 0.8em
+                                        padding: 0.5em
+                                        line-height: 1.2
                                     .price-input, .discount-input
                                         display: flex
                                         align-items: center
@@ -329,11 +372,12 @@
                                 label
                                     font-size: 0.8em
                                 .inp-dropdown
-                                    border: 2px solid $grey
-                                    border-radius: 20px
+                                    border: 1px solid $grey
+                                    border-radius: 12px
                                     display: flex
                                     align-items: center
                                     padding: .2em .4em .2em .4em
+                                    font-size: 0.8em
                                     .status-color
                                         min-width: 12px
                                         width: 12px
@@ -346,7 +390,7 @@
                                         background-color: $negative
                                     select
                                         border: none
-                                        width:  100%
+                                        width: 100%
                                         font-weight: 600
                                         outline: none
                                         &:active, &:focus-visible, &:focus-within
@@ -356,7 +400,7 @@
                                 cursor: pointer
                                 span
                                     margin: 0em 0.2em
-                                    font-size: 1.8em
+                                    font-size: 1.6em
                                 .deleted
                                     color: $negative
                     .add-product
