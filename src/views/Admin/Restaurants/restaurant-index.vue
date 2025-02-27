@@ -2,7 +2,7 @@
   <div class="deliveries-container">
     <div class="title-container">
       <h1>Restaurantes</h1>
-      <RouterLink to="/administrador/deliverymen/manage" class="delivery-export-btn">
+      <RouterLink to="/administrador/restaurants/manage" class="delivery-export-btn">
         <span class="material-symbols-outlined"> add_circle </span> Crear restaurante
       </RouterLink>
     </div>

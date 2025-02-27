@@ -11,10 +11,19 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
         </router-link>
+        <router-link class="link-icon" :to="{ name: 'TrackerLayout' }">
+          <div class="menu-item" :class="{ active: isActiveIcon('seguimiento') }">
+            <div class="menu-item-nav">
+              <span class="material-symbols-outlined"> dashboard </span>
+              <p>Seguimiento</p>
+            </div>
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
+        </router-link>
         <router-link class="link-icon" :to="{ name: 'AdminDeliveriesLayout' }">
           <div class="menu-item" :class="{ active: isActiveIcon('domicilios') }">
             <div class="menu-item-nav">
-              <span class="material-symbols-outlined"> shopping_bag </span>
+              <span class="material-symbols-outlined"> view_list </span>
               <p>Domicilios</p>
             </div>
             <span class="material-symbols-outlined">chevron_right</span>
@@ -23,7 +32,7 @@
         <router-link class="link-icon" :to="{ name: 'restaurantIndex' }">
           <div class="menu-item" :class="{ active: isActiveIcon('restaurants') }">
             <div class="menu-item-nav">
-              <span class="material-symbols-outlined"> shopping_bag </span>
+              <span class="material-symbols-outlined"> restaurant </span>
               <p>Restaurantes</p>
             </div>
             <span class="material-symbols-outlined">chevron_right</span>
@@ -32,7 +41,7 @@
         <router-link class="link-icon" :to="{ name: 'deliverymenIndex' }">
           <div class="menu-item" :class="{ active: isActiveIcon('deliverymen') }">
             <div class="menu-item-nav">
-              <span class="material-symbols-outlined"> shopping_bag </span>
+              <span class="material-symbols-outlined"> sports_motorsports </span>
               <p>Domicialiarios</p>
             </div>
             <span class="material-symbols-outlined">chevron_right</span>

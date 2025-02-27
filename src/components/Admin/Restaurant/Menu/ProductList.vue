@@ -4,8 +4,7 @@
       <div class="main-info-product">
         <div class="img-product">
           <img :src="computedImageSrc" alt="Producto" />
-          <input type="file" :id="`fileInput-${category.id}-${localProduct.id}`" @change="onImageChange"
-            style="display: none" />
+          <input type="file" :id="`fileInput-${category.id}-${localProduct.id}`" @change="onImageChange" style="display: none" />
           <div class="btn-img-product">
             <label :for="`fileInput-${category.id}-${localProduct.id}`" class="btn-edit-img">
               <span class="material-symbols-outlined">edit_square</span>
@@ -24,8 +23,7 @@
             <label for="price-product">Precio</label>
             <div class="price-input">
               <span class="currency-sign">$</span>
-              <input id="price-product" type="text" v-model="localProduct.price" @input="validateNumber($event)"
-                placeholder="0.00" />
+              <input id="price-product" type="text" v-model="localProduct.price" @input="validateNumber($event)" placeholder="0.00" />
             </div>
           </div>
           <div class="inp-w-col">
@@ -34,14 +32,13 @@
           </div>
           <div class="inp-first-col">
             <div class="check-off" :class="{ active: localProduct.discount > 0 }">
-              <div v-if="localProduct.discount > 0" class="text-off-inpt">
+              <div v-if="localProduct.hasDiscount" class="text-off-inpt">
                 <label for="off-product">Descuento</label>
                 <div class="discount-input">
                   <span class="currency-sign">$</span>
-                  <input id="off-product" type="text" v-model="localProduct.discount" @input="validateNumber($event)"
-                    placeholder="0.00" />
+                  <input id="off-product" type="text" v-model="localProduct.discount" @input="validateNumber($event)" placeholder="0.00" />
                 </div>
-                <p>Precio con el descuento</p>
+                <p>Precio con el descuento: <b>${{ discountedPrice }}</b></p>
               </div>
               <div class="check-off-inp">
                 <input id="inp-off" type="checkbox" v-model="localProduct.hasDiscount" />
@@ -54,7 +51,7 @@
       <div class="options-product">
         <div class="option-product option-product-one">
           <span>
-            <h4>+ Opciones de Producto <span>{{ localProduct?.options.length }}</span></h4>
+            <h4>+ Opciones de Producto <span>{{ localProduct.options ? localProduct.options.length : '0' }}</span></h4>
           </span>
           <p>Precios múltiples, extras, acompañamientos</p>
           <ProductOptions :productId="localProduct.id" />
@@ -81,7 +78,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, computed } from 'vue'
+import { ref, defineProps, defineEmits, computed, watch } from 'vue'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import ProductOptions from './ProductOptions.vue'
@@ -97,20 +94,30 @@ const apiBaseUrl = import.meta.env.VITE_VUE_APP_API_URL
 const productUpdateImage = ref(null)
 
 // Crear una copia local del producto para editarlo
-const localProduct = ref({ ...props.product })
+const localProduct = ref({
+  ...props.product,
+  hasDiscount: props.product.discount > 0, // Inicializar hasDiscount basado en discount
+})
 
 // Computed para manejar la imagen actual
 const computedImageSrc = computed(() => {
   if (productUpdateImage.value) {
-    // Si hay una imagen cargada localmente, crear una URL para mostrarla
     return URL.createObjectURL(productUpdateImage.value)
   } else if (localProduct.value.image) {
-    // Si hay una imagen del servidor, usar la URL del servidor
     return `${apiBaseUrl}/storage/${localProduct.value.image}`
   } else {
-    // Imagen por defecto
     return '/src/assets/images/placeholder-image.jpg'
   }
+})
+
+// Computed para el precio con descuento
+const discountedPrice = computed(() => {
+  if (localProduct.value.hasDiscount && localProduct.value.discount > 0) {
+    const price = parseFloat(localProduct.value.price || 0)
+    const discount = parseFloat(localProduct.value.discount || 0)
+    return price - discount >= 0 ? price - discount : 0
+  }
+  return localProduct.value.price
 })
 
 // Función para actualizar el producto
@@ -123,13 +130,12 @@ const updateProduct = async () => {
     formData.append('discount', localProduct.value.hasDiscount ? localProduct.value.discount : 0)
     formData.append('state', localProduct.value.state)
 
-    // Si hay una imagen seleccionada
     if (productUpdateImage.value) {
       formData.append('image', productUpdateImage.value)
     }
 
     await axios.post(`${apiBaseUrl}/api/product/update/${localProduct.value.id}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
+      headers: { 'Content-Type': 'multipart/form-data' },
     })
 
     Swal.fire({
@@ -168,10 +174,8 @@ const tryDeleteProduct = () => {
     text: '¡No podrás revertir esto!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
     confirmButtonText: 'Sí, eliminar',
-    cancelButtonText: 'Cancelar'
+    cancelButtonText: 'Cancelar',
   }).then((result) => {
     if (result.isConfirmed) {
       deleteProduct()
@@ -196,6 +200,18 @@ const validateNumber = (event) => {
     input.value = input.value.slice(0, -1)
   }
 }
+
+// Watch para validar que el descuento no sea mayor que el precio
+watch([() => localProduct.value.price, () => localProduct.value.discount], () => {
+  if (localProduct.value.hasDiscount) {
+    const price = parseFloat(localProduct.value.price || 0)
+    const discount = parseFloat(localProduct.value.discount || 0)
+
+    if (discount > price) {
+      localProduct.value.discount = price
+    }
+  }
+})
 </script>
 
 <style lang="sass" scoped>
