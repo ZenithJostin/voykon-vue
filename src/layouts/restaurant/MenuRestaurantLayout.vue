@@ -94,7 +94,7 @@
             </form>
             <transition name="expand" @before-enter="beforeEnter" @enter="enter" @leave="leave">
               <div v-show="category.isExpanded" class="product-container" ref="container">
-                <template v-for="product in category.products" :key="product.id">
+                <template v-for="product in filteredProductsByCategory(category.id)" :key="product.id">
                   <ProductList :category="category" :product="product" @delete-product="handleProductDelete" />
                 </template>
                 <div class="add-product">
@@ -180,7 +180,7 @@ onMounted(() => {
   checkAuthentication()
   fetchRestaurantInfo()
   fetchCategories()
-  // fetchProducts()
+  fetchProducts()
 })
 
 const beforeEnter = (el) => {
@@ -234,16 +234,16 @@ const fetchCategories = async () => {
   }
 }
 
-// const fetchProducts = async () => {
-//   try {
-//     const response = await axios.get(`${apiBaseUrl}/api/products`, {
-//       headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
-//     })
-//     products.value = response.data
-//   } catch (error) {
-//     console.error('Error al obtener categorías:', error)
-//   }
-// }
+const fetchProducts = async () => {
+  try {
+    const response = await axios.get(`${apiBaseUrl}/api/products`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+    })
+    products.value = response.data
+  } catch (error) {
+    console.error('Error al obtener categorías:', error)
+  }
+}
 const fetchRestaurantInfo = async () => {
   // Obtener información del restaurante
   try {
@@ -262,15 +262,16 @@ const fetchRestaurantInfo = async () => {
   }
 }
 
-// const filteredProductsByCategory = (categoryId) => {
-//   return products.value.filter((product) => product.category_id === categoryId)
-// }
+const filteredProductsByCategory = (categoryId) => {
+  return products.value.filter((product) => product.category_id === categoryId)
+}
 
 const addCategory = async () => {
   try {
     const response = await axios.post(`${apiBaseUrl}/api/category/store`, {
       name: 'Nueva Categoría',
-      user_id: userId.value
+      user_id: userId.value,
+      emoji: '🍔'
     })
     const newCategory = {
       id: response.data.id,
@@ -311,7 +312,7 @@ const addProduct = async (categoryId) => {
     }
 
     products.value.push(newProduct)
-    fetchCategories()
+    fetchProducts()
   } catch (error) {
     console.error('Error al agregar producto:', error)
   }
@@ -486,3 +487,13 @@ const handleProductDelete = async (productId) => {
 <style lang="sass" scoped>
 @import url(/src/css/RestaurantMenu.sass)
 </style>
+<!-- <style>
+.swal2-cancel{
+	color: #fff;
+  background-color: #6e6e6e;
+}
+.swal2-confirm{
+	color: #fff;
+  background-color: #e70364;
+}
+</style> -->

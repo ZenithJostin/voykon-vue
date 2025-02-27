@@ -126,7 +126,8 @@
 .order-modal[open]
     display: flex
 .order-modal
-    width: 400px
+    width: 800px
+    max-width: 95%
     flex-direction: column
     align-self: center
     justify-self: center
@@ -153,6 +154,12 @@
         flex-grow: 1
         overflow-y: scroll
         padding: 1rem
+        .map-bx
+            height: 300px
+            width: 100%
+            border: 1px solid $lightgrey
+            border-radius: 10px
+            overflow: hidden
         form
             height: 100%
             width: 100%

@@ -26,6 +26,7 @@ import deliverymenManage from '@/views/Admin/Deliverymen/deliverymen-manage.vue'
 // Restaurant
 import RestaurantView from '../views/RestaurantView.vue'
 import RestaurantOrders from '../layouts/restaurant/OrdersRestaurantLayout.vue'
+import RestaurantOrdersCreate from '../layouts/restaurant/OrdersRestaurantCreateLayout.vue'
 import RestaurantProfile from '../layouts/restaurant/ProfileRestaurantLayout.vue'
 import RestaurantMenu from '../layouts/restaurant/MenuRestaurantLayout.vue'
 import ProductOptionsMenu from '../layouts/restaurant/ProductOptionsRestaurantLayout.vue'
@@ -34,6 +35,9 @@ import ProductOptionsMenu from '../layouts/restaurant/ProductOptionsRestaurantLa
   //Layouts
 import MenuLayout from '../layouts/menu/Layouts/MenuLayout.vue'
 import ViewOrdersLayout from '../layouts/menu/Layouts/ViewOrdersLayout.vue';
+import FinalOrdersLayout from '../layouts/menu/Layouts/FinalOrdersLayout.vue';
+import AdminRoutingTracker from '@/layouts/admin/AdminRoutingTracker.vue';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -94,6 +98,11 @@ const router = createRouter({
           component: AdminRoutingLayout,
         },
         {
+          path: "seguimiento",
+          name: "TrackerLayout",
+          component: AdminRoutingTracker,
+        },
+        {
           path: "perfil",
           name: "ProfileViewAdmin",
           component: AdminProfileLayout,
@@ -109,8 +118,13 @@ const router = createRouter({
           component: AdminStreetLayout,
         },
         {
-          path: "barrios/registro",
+          path: "barrios/manage",
           name: "AdminStreetRegistration",
+          component: AdminStreetRegistrationLayout,
+        },
+        {
+          path: "barrios/manage/:id",
+          name: "AdminStreetUpdate",
           component: AdminStreetRegistrationLayout,
         },
         {
@@ -157,6 +171,11 @@ const router = createRouter({
           component: RestaurantOrders,
         },
         {
+          path: "pedidos/crear",
+          name: "OrdersRestaurantCreate",
+          component: RestaurantOrdersCreate,
+        },
+        {
           path: "perfil",
           name: "ProfileRestaurant",
           component: RestaurantProfile,
@@ -184,9 +203,14 @@ const router = createRouter({
       component: MenuLayout,
     },
     {
-      path: '/menu/pedidos',
+      path: '/menu/pedidos/:id',
       name: 'ViewOrdersLayout',
       component: ViewOrdersLayout,
+    },
+    {
+      path: '/menu/pedido/:id',
+      name: 'FinalOrdersLayout',
+      component: FinalOrdersLayout,
     }
   ]
 })

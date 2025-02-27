@@ -11,10 +11,8 @@
     .order-card-admin.extended-details
         height: 450px
     .order-card-admin
-        height: 250px
-        width: 310px
+        height: auto
         min-height: 200px
-        min-width: 250px
         background-color: $white
         border-radius: 10px
         box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.29)
@@ -35,9 +33,9 @@
                 background-color: $white
                 position: absolute
                 top: 85%
+                right: 0
                 border-radius: 10px 0 10px 10px
                 overflow: hidden
-                padding: 0.5em 1em
                 display: flex
                 flex-direction: column
                 align-items: center
@@ -65,6 +63,8 @@
                         justify-content: flex-start
                         gap: 7px
                         cursor: pointer
+                        &.selected-user
+                            border: 3px solid $primary
                         .user-tag-picture
                             max-height: 55px
                             max-width: 55px
@@ -91,12 +91,20 @@
                     color: $white
                     cursor: pointer
                     display: none
+            .user-assignment-container.left
+                right: inherit
+                left: 0
+                border-radius: 0px 10px 10px 0px !important
             .user-assignment-container.active
                 height: 400px
+                padding: 0.5em 1em
                 box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.61)
                 border-top: 4px solid $primary
                 .assign-user-btn
                     display: block
+                    &:disabled
+                        background-color: #d3d3d3
+                        color: $dark
             .order-card-menu
                 height: 32px
                 width: 27px
@@ -159,11 +167,13 @@
                     img
                         height: 100%
                         width: 100%
+                        object-fit: contain
         .order-card-bottom
             min-height: 75px
             width: 100%
             padding: 0.5em 1em
             display: flex
+            flex-wrap: wrap
             .order-time
                 flex: 1
                 display: flex

@@ -11,8 +11,9 @@
           {{ props.product.description }}
         </p>
       </div>
-      <div class="product-price">$ <span> {{ formatCurrency(props.product.price) }} </span></div>
-      <AddToCartBtnComponent />
+      <div class="product-price" :class="props.product.discount > 0 ? 'discount' : '' ">$ <span> {{ formatCurrency(props.product.price) }} </span></div>
+      <div class="product-discount" v-if="props.product.discount > 0">$ <span> {{ formatCurrency( props.product.price - props.product.discount) }} </span></div>
+      <AddToCartBtnComponent :productId="props.product.id"/>
     </div>
   </div>
 </template>
